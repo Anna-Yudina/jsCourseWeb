@@ -1,4 +1,41 @@
-p {
-    border-color: aqua;
-    font-size: 20px;
+body {
+    font-family: Arial, serif;
+    color: #676573;
+}
+
+.blueLetters {
+    color: #378DB2;
+    font-weight: bold;
+}
+
+.block {
+    background-color: #FEEED6;
+    width: 720px;
+    margin: auto;
+    padding: 5px 10px 0 10px;
+}
+
+.cross {
+    text-decoration: line-through;
+}
+
+.indent {
+    text-indent: 20px;
+    line-height: 1.5;
+    font-size: 15px;
+    letter-spacing: 0.1pt;
+    text-align: justify;
+}
+
+.last-element {
+    margin: 0;
+}
+
+.paragraph {
+    margin: 10px 0 10px 0;
+}
+
+.first-element {
+    margin: 0;
+    font-size: 27px;
 }
