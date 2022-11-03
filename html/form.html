@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Форма</title>
+</head>
+<body>
+<form method="post">
+    <p>
+        <label>Имя:<input name="name" type="text" placeholder="укажите свое имя">
+        </label>
+    </p>
+    <p>
+        <label>Фамилия:<input name="surname" type="text" placeholder="укажите свою фамилию">
+        </label>
+    </p>
+    <p>
+        <label>О себе:<textarea placeholder="расскажите немного о себе"></textarea>
+        </label>
+    </p>
+    <p>
+        <label>Пол:</label>
+        <input id="male" name="gender" type="radio" value="male">
+        <label for="male">мужчина</label>
+        <input id="female" name="gender" type="radio" value="female">
+        <label for="female">женщина</label>
+    </p>
+    <p>
+        <label>Вы русский(ая)?
+            <input name="russian" type="checkbox">
+        </label>
+    </p>
+    <p>
+        <label>Семейное положение:
+            <select>
+                <option>Женат/Замужем</option>
+                <option>Не женат/Не замужем</option>
+            </select>
+        </label>
+    </p>
+    <p>
+        <label>Знание языков:
+            <select multiple>
+                <option>Русский</option>
+                <option>Английский</option>
+                <option>Немецкий</option>
+                <option>Францкзский</option>
+                <option>Китайский</option>
+            </select>
+        </label>
+    </p>
+    <button type="submit">отправить</button>
+    <div>
+        <p>
+            <a href="content.html">Перейти на главную страницу</a>
+        </p>
+    </div>
+</form>
+</body>
+</html>
