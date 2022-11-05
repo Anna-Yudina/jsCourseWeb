@@ -1,0 +1,68 @@
+.block {
+    margin: auto;
+    width: 735px;
+}
+
+.title {
+    font-family: Arial, serif;
+    font-size: 29px;
+    color: #676565;
+    font-weight: normal;
+    margin: 0 0 3px 20px;
+}
+
+form {
+    font-family: Arial, serif;
+    background-color: #FEEED6;
+    padding: 0 18px 12px 18px;
+}
+
+.request {
+    font-weight: bold;
+    color: #676565;
+    font-size: 14px;
+    line-height: 2;
+    margin: 0;
+    padding: 10px 0 3px 0;
+}
+
+.comment_area {
+    height: 93px;
+}
+
+.unit {
+    width: 680px;
+    padding: 9px;
+    font-size: 14px;
+    border: none;
+}
+
+.instruction {
+    font-size: 14px;
+    color: #6C6F81;
+    margin: 0;
+    padding: 5px 0;
+}
+
+input.unit::placeholder {
+    color: #9FA8C0;
+}
+
+textarea.comment_area::placeholder {
+    color: #9FA8C0;
+}
+
+.send_button {
+    background-color: #378DB2;
+    color: white;
+    border: none;
+    font-weight: bold;
+    width: 150px;
+    padding: 8px;
+    font-size: 14px;
+}
+
+.paragraph_button {
+    margin: 0 0 0 548px;
+    padding: 8px 0 2px 0;
+}

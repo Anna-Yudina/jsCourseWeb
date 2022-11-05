@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Css form</title>
+    <link href="formStyle.css" rel="stylesheet">
+    <link href="../normalise.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="block">
+    <h1 class="title">Отправить заявку</h1>
+    <form method="post">
+        <p class="request">
+            <label>Ваше имя<br>
+                <input name="name" type="text" placeholder="Ваше имя *" class="unit">
+            </label>
+        </p>
+        <p class="request">
+            <label>Ваш номер телефона<br>
+                <input class="unit" name="phone_number" type="text" placeholder="Ваш номер телефона *">
+            </label>
+        </p>
+        <p class="request">
+            <label>Ваш email или VK<br>
+                <input name="email_or_vk" type="text" placeholder="Ваш email или VK *" class="unit">
+            </label>
+        </p>
+        <p class="request">
+            <label>Комментарий<br>
+                <textarea placeholder="Комментарий (не обязательно)" class="unit comment_area"></textarea>
+            </label>
+        </p>
+        <p class="instruction">
+            <label>Заполните и отправте форму, и мы перезвоним Вам по указанному номеру</label><br>
+        </p>
+        <p class="paragraph_button">
+            <button class="send_button" type="submit">Отправить заявку</button>
+        </p>
+    </form>
+</div>
+</body>
+</html>
