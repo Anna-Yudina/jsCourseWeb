@@ -1,18 +1,19 @@
 .block {
     margin: auto;
-    width: 735px;
+    max-width: 735px;
+    width: 90%;
 }
 
 .title {
-    font-family: Arial, serif;
+    font-family: Arial, sans-serif;
     font-size: 29px;
     color: #676565;
     font-weight: normal;
-    margin: 0 0 3px 20px;
+    margin: 0 20px 3px 20px;
 }
 
-form {
-    font-family: Arial, serif;
+.request-form {
+    font-family: Arial, sans-serif;
     background-color: #FEEED6;
     padding: 0 18px 12px 18px;
 }
@@ -28,13 +29,15 @@ form {
 
 .comment_area {
     height: 93px;
+    resize: vertical;
 }
 
 .unit {
-    width: 680px;
-    padding: 9px;
+    width: 100%;
     font-size: 14px;
     border: none;
+    padding: 9px 0 9px 0;
+    text-indent: 9px;
 }
 
 .instruction {
@@ -54,15 +57,20 @@ textarea.comment_area::placeholder {
 
 .send_button {
     background-color: #378DB2;
-    color: white;
+    color: #FFF;
     border: none;
     font-weight: bold;
     width: 150px;
     padding: 8px;
     font-size: 14px;
+    cursor: pointer;
+}
+
+.send_button:hover {
+    background-color: #708090;
 }
 
 .paragraph_button {
-    margin: 0 0 0 548px;
-    padding: 8px 0 2px 0;
+    text-align: right;
+    margin: 5px 0 0 0;
 }
