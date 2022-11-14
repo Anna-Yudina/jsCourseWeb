@@ -1,0 +1,50 @@
+.list-block {
+    width: 100%;
+    max-width: 750px;
+    margin: auto;
+    background-color: #FEEED6;
+    border-radius: 1em;
+    border: 1px solid #000;
+}
+
+.list-title::before, .list-title::after {
+    content: "  \2749 \2749 \2749  ";
+    color: #378DB2;
+}
+
+.list-form {
+    margin: 10px;
+    position: relative;
+}
+
+.list-form input {
+    width: 90%;
+    text-align: left;
+}
+
+.list-title {
+    margin: 10px;
+    text-align: center;
+}
+
+.list-form button {
+    position: absolute;
+    right: 0;
+}
+
+.list-div {
+    margin: 10px;
+    text-align: left;
+}
+
+.list-div ul {
+ padding: 0;
+}
+
+.list-div li {
+    background-color: #9FA8C0;
+    list-style-type: none;
+    width: 100%;
+    border: 1px solid #000;
+}
+
