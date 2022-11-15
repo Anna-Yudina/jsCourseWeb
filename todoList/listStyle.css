@@ -1,5 +1,5 @@
 .list-block {
-    width: 100%;
+    width: 70%;
     max-width: 750px;
     margin: auto;
     background-color: #FEEED6;
@@ -30,14 +30,28 @@
 .list-form button {
     position: absolute;
     right: 0;
+    top: 18px;
 }
 
-.delete-button button {
-    width: 40px;
+.button-span > button {
+    width: 20px;
     padding: 0;
     text-align: center;
-    height: 18px;
+    height: 20px;
     font-size: 14px;
+}
+
+.delete-button {
+    color: #FF0000;
+}
+
+.ok-button {
+    color: #00D678;
+}
+
+.cancel-button {
+    font-weight: bold;
+    color: #964b00;
 }
 
 .list-div {
@@ -52,9 +66,8 @@
 }
 
 .list-div li {
-    background-color: #9FA8C0;
     list-style-type: none;
-    border: 1px solid #000;
+    border-bottom: 1px solid #000;
     margin: 5px 0 5px 0;
     height: 25px;
     text-indent: 5px;
@@ -64,10 +77,22 @@
     line-height: 25px;
 }
 
-.delete-button {
+.button-span {
     float: right;
     line-height: 25px;
 }
 
+.add-button {
+    width: 45px;
+}
 
+.edit-text{
+    width: 90%;
+    border: none;
+    padding: 0;
+}
+
+.error-massage{
+    color: #FF0000;
+}
 
