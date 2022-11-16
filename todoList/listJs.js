@@ -5,12 +5,14 @@ document.addEventListener("DOMContentLoaded", function () {
     var errorMassage = document.querySelector(".error-massage");
 
     addButton.addEventListener("click", function () {
-        var text = newText.value;
+        var text = newText.value.trim();
 
         errorMassage.style.display = "none";
+        newText.style.borderColor = "#000";
 
         if (text.length === 0) {
             errorMassage.style.display = "block";
+            newText.style.borderColor = "#FF0000";
             return;
         }
 
@@ -25,9 +27,13 @@ document.addEventListener("DOMContentLoaded", function () {
             item.querySelector('.edit-text').value = text;
 
             item.querySelector('.ok-button').addEventListener("click", function () {
-                newText = item.querySelector('.edit-text').value;
+                var editTextElement = item.querySelector('.edit-text');
+                var editText = editTextElement.value;
+                errorMassage.style.display = "none";
 
-                if (newText.length === 0) {
+                if (editText.length === 0) {
+                    errorMassage.style.display = "block";
+                    editTextElement.style.borderColor = "#FF0000";
                     return;
                 }
 

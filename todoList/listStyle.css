@@ -88,11 +88,10 @@
 
 .edit-text{
     width: 90%;
-    border: none;
     padding: 0;
+    border-color: #000;
 }
 
 .error-massage{
     color: #FF0000;
 }
-
