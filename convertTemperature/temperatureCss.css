@@ -1,0 +1,36 @@
+.textBlock {
+    display: inline-block;
+    width: 200px;
+    margin: 10px;
+    border-bottom: #FFF solid 1px;
+    padding: 2px;
+    box-shadow: 0 5px 5px -5px #333;
+}
+
+.scale {
+    width: 95%;
+    max-width: 400px;
+    margin: auto;
+    background-color: #9FA8C0;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
+
+.scale button {
+    margin: 10px;
+}
+
+.scale input {
+    width: 100px;
+    border: #000 solid 1px;
+}
+
+.title {
+    font-size: 30px;
+}
+
+.null-error-massage, .not-number-error-massage {
+    color: #FF0000;
+}
