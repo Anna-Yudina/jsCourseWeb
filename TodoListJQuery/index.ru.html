@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>TODO List</title>
+    <script src="jquery-3.6.1.js"></script>
+    <script src="listJQuery.js"></script>
+    <link href="normalize.css" rel="stylesheet">
+    <link href="listStyleJQuery.css" rel="stylesheet">
+</head>
+<body>
+<div class="list-block">
+    <h1 class="list-title">TODO List</h1>
+    <form class="list-form">
+        <label>Введите текст:
+            <input id="new-text" type="text" maxlength="85">
+        </label>
+        <div style="display: none" class="error-massage">Текст не должен быть пустым!</div>
+        <button class='add-button' id="add-button" type="button">OK</button>
+    </form>
+    <div class="list-div">
+        <ul id="todo-list">
+        </ul>
+    </div>
+</div>
+</body>
+</html>
