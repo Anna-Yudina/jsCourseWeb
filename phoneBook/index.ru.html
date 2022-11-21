@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Phone Book</title>
+    <link href="normalize.css" rel="stylesheet">
+    <link rel="stylesheet" href="jquery-ui-1.13.2/jquery-ui.css">
+    <link href="phoneBookStyle.css" rel="stylesheet">
+    <script src="jquery-3.6.1.js"></script>
+    <script src="jquery-ui-1.13.2/jquery-ui.js"></script>
+    <script src="phoneBookJs.js"></script>
+</head>
+<body>
+<div class="form">
+    <p>
+    <h2 class="titleForm">Введите данные нового контакта:</h2>
+    </p>
+    <div class="inputDiv">
+        <input type="text" id="inputSurname" placeholder="Фамилия">
+        <input type="text" id="inputName" placeholder="Имя">
+        <input type="text" id="inputPhoneNumber" placeholder="Телефон">
+    </div>
+    <div style="display: none" class="error-massage"></div>
+    <p>
+        <button type="button" id="save-button">Сохранить</button>
+    </p>
+</div>
+
+<div class="tableDiv">
+    <h2 class="titleTable">Телефонная книга</h2>
+    <table>
+        <thead>
+        <tr>
+            <th>&#8470;</th>
+            <th>Фамилия</th>
+            <th>Имя</th>
+            <th>Номер телефона</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody class="tbody">
+<!--        <tr class="newRow">-->
+<!--            <td>1</td>-->
+<!--            <td>Иванов</td>-->
+<!--            <td>Иван</td>-->
+<!--            <td>999</td>-->
+<!--            <td class="delete-button-cell">-->
+<!--                <button class="delete-button">&#10006;</button>-->
+<!--            </td>-->
+<!--        </tr>-->
+        </tbody>
+    </table>
+</div>
+<div id="dialog"  title="Удаление">
+    <p>Вы действительно хотите удалить контакт?</p>
+</div>
+</body>
+</html>

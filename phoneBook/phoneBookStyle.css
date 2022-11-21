@@ -1,0 +1,67 @@
+.form {
+    width: 95%;
+    max-width: 750px;
+    background-color: #F5F6C8;
+    margin: auto;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.titleForm {
+    font-family: Arial, serif;
+    font-size: 24px;
+}
+
+.inputDiv input{
+    margin: 5px;
+    border: 1px solid #767676;
+}
+
+.tableDiv {
+    width: 95%;
+    max-width: 750px;
+    margin: auto;
+    font-family: Arial, serif;
+    font-size: 20px;
+    background-color: #FFFAE5;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.tableDiv th:first-child {
+    width: 50px;
+}
+
+.tableDiv th:last-child {
+    width: 50px;
+}
+
+.tableDiv th {
+    width: 250px;
+    background-color: #7BA00C;
+    color: #FFF;
+    text-shadow: #000 2px 2px 4px;
+}
+
+.tableDiv td {
+    background-color: #c3d8a6;
+    text-indent: 5px;
+}
+
+.delete-button-cell button {
+    background-color: #c3d8a6;
+    border: none;
+}
+
+.delete-button {
+    color: #d93242;
+}
+
+.delete-button:hover {
+    font-weight: bold;
+    text-shadow: #000 1px 1px 2px;
+}
+
+.error-massage{
+    color: #d93242;
+}
