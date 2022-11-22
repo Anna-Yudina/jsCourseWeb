@@ -55,6 +55,7 @@
 
 .delete-button {
     color: #d93242;
+    float: right;
 }
 
 .delete-button:hover {
