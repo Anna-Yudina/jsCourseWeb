@@ -8,7 +8,6 @@ $(function () {
     var errorMassage = $(".error-massage");
     var dialog = $("#dialog");
     var itemForDelete = null;
-    var allPhoneNumbers = [];
 
     saveButton.click(function () {
         var item = $("<tr>");
@@ -22,9 +21,9 @@ $(function () {
         phoneNumberElement.css({border: "#767676 solid 1px"});
 
 
-        checkInputNull(surnameElementText, nameElementText, phoneNumberElementText);
-
-        checkEqualPhoneNumber(phoneNumberElement);
+        if (checkInputNull(surnameElementText, nameElementText, phoneNumberElementText) || checkEqualPhoneNumber(phoneNumberElementText)){
+        return;
+        }
 
         item.html("<td class='counter'></td>" +
             "<td class='newSurname'></td>" +
@@ -101,20 +100,18 @@ $(function () {
                 errorMassageText += "Заполните телефон!";
                 errorMassage.text(errorMassageText);
             }
+            return true;
         }
     }
 
-    function checkEqualPhoneNumber(phoneNumberElement) {
-        allPhoneNumbers = tbody.find(".newPhoneNumber");
-        console.log(allPhoneNumbers);
-        allPhoneNumbers.each(function () {
-            // if (this.text === phoneNumberElementText) {
-            //
-            //     errorMassage.css({display: "block"});
-            //     errorMassage.text("Такой телефон уже существует!");
-            // }
-            console.log(phoneNumberElement);
-            console.log(this);
+    function checkEqualPhoneNumber(text) {
+        console.log(text)
+       tbody.find(".newPhoneNumber").each(function(){
+            if ($(this).text() === text){
+                errorMassage.css({display: "block"});
+                errorMassage.text("Данный контакт уже зарегистрирован!");
+                return true;
+            }
         })
     }
 })
