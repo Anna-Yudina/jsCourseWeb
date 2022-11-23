@@ -7,7 +7,6 @@ $(function () {
     var counter = 1;
     var errorMassage = $(".error-massage");
     var dialog = $("#dialog");
-    var itemForDelete = null;
     var checkedItems = [];
 
     saveButton.click(function () {
@@ -21,8 +20,8 @@ $(function () {
         nameElement.css({border: "#767676 solid 1px"});
         phoneNumberElement.css({border: "#767676 solid 1px"});
 
-        if (checkInput(surnameElementText, nameElementText, phoneNumberElementText)){
-        return;
+        if (checkInput(surnameElementText, nameElementText, phoneNumberElementText)) {
+            return;
         }
 
         console.log("процесс прошел дальше")
@@ -73,8 +72,8 @@ $(function () {
 
             isError = true;
         } else {
-            tbody.find(".newPhoneNumber").each(function(){
-                if ($(this).text() === phoneNumber){
+            tbody.find(".newPhoneNumber").each(function () {
+                if ($(this).text() === phoneNumber) {
                     errorMassage.css({display: "block"});
                     errorMassage.text("Данный контакт уже зарегистрирован!");
                     isError = true;
@@ -86,18 +85,14 @@ $(function () {
     }
 
     $(".delete-button").click(function () {
-        tbody.find('tr').each(function (){
-                if($(this).find(".checkbox-flag").prop('checked')) {
-                    checkedItems.push($(this));
-                }
-            });
-       // tbody.find(".checkbox-flag").each(function(){
-            // if($(this).prop('checked')){
-            //     checkedItems.push($(this));
-            // }
+        tbody.find('tr').each(function () {
+            if ($(this).find(".checkbox-flag").prop('checked')) {
+                checkedItems.push($(this));
+            }
+        });
 
         console.log(checkedItems);
-        if(checkedItems.length !== 0 || checkedItems.length !==0){
+        if (checkedItems.length !== 0 || checkedItems.length !== 0) {
             dialog.dialog("open");
         }
     });
@@ -109,9 +104,12 @@ $(function () {
             {
                 text: "OK",
                 click: function () {
-                    checkedItems.remove();
+                    checkedItems.forEach(function (el) {
+                        el.remove();
                         counter--;
+                    })
 
+                    console.log(counter);
                     if (counter !== 0) {
                         tbody.find(".counter").each(function (i) {
                             $(this).text(i + 1);
@@ -119,6 +117,7 @@ $(function () {
                     }
 
                     dialog.dialog("close");
+                    checkedItems = [];
                 }
             },
             {
