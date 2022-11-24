@@ -118,6 +118,7 @@ $(function () {
 
                     dialog.dialog("close");
                     checkedItems = [];
+                    $("#all-selected-checkbox").prop('checked', false);
                 }
             },
             {
@@ -127,5 +128,13 @@ $(function () {
                 }
             }
         ]
+    });
+
+    $("#all-selected-checkbox").click(function () {
+        if(this.checked){
+            $(".checkbox-flag").prop('checked', true);
+        } else{
+            $(".checkbox-flag").prop('checked', false);
+        }
     });
 })
