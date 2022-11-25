@@ -11,14 +11,14 @@
     <script src="phoneBookJs.js"></script>
 </head>
 <body>
-<div class="form">
+<div class="new-contact-form">
     <p>
-    <h2 class="titleForm">Введите данные нового контакта:</h2>
+    <h2 class="title-form">Введите данные нового контакта:</h2>
     </p>
-    <div class="inputDiv">
-        <input type="text" id="inputSurname" placeholder="Фамилия">
-        <input type="text" id="inputName" placeholder="Имя">
-        <input type="text" id="inputPhoneNumber" placeholder="Телефон">
+    <div class="input-block">
+        <input type="text" id="input-surname" placeholder="Фамилия">
+        <input type="text" id="input-name" placeholder="Имя">
+        <input type="text" id="input-phone-number" placeholder="Телефон">
     </div>
     <div style="display: none" class="error-massage"></div>
     <p>
@@ -26,19 +26,19 @@
     </p>
 </div>
 
-<div class="tableDiv">
-    <h2 class="titleTable">Телефонная книга</h2>
+<div class="contact-table">
+    <h2 class="title-table">Телефонная книга</h2><div class="filter"><span>фильтр:</span><input type="text"></div>
     <table>
         <thead>
         <tr>
-            <th class="second-child">&#8470;</th>
+            <th>&#8470;</th>
             <th>Фамилия</th>
             <th>Имя</th>
             <th>Номер телефона</th>
             <th><input type='checkbox' id='all-selected-checkbox'/></th>
         </tr>
         </thead>
-        <tbody class="tbody">
+        <tbody class="contact-lines">
         </tbody>
     </table>
     <button type="button" class="delete-button">Удалить</button>

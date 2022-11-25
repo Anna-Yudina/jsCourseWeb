@@ -1,4 +1,4 @@
-.form {
+.new-contact-form {
     width: 95%;
     max-width: 750px;
     background-color: #F5F6C8;
@@ -7,17 +7,17 @@
     border-radius: 5px;
 }
 
-.titleForm {
+.title-form {
     font-family: Arial, serif;
     font-size: 24px;
 }
 
-.inputDiv input{
+.input-block input{
     margin: 5px;
     border: 1px solid #767676;
 }
 
-.tableDiv {
+.contact-table {
     width: 95%;
     max-width: 750px;
     margin: auto;
@@ -28,24 +28,29 @@
     padding: 10px;
 }
 
-.tableDiv th:first-child {
+.contact-table th:first-child {
     width: 50px;
 }
 
-.tableDiv th:last-child {
+.contact-table th:last-child {
     width: 50px;
 }
 
-.tableDiv th {
+.contact-table th {
     width: 250px;
     background-color: #7BA00C;
     color: #FFF;
     text-shadow: #000 2px 2px 4px;
 }
 
-.tableDiv td {
+.contact-table td {
     background-color: #c3d8a6;
     text-indent: 5px;
+}
+
+.contact-table td:last-child {
+    text-indent: 0;
+    text-align: center;
 }
 
 .delete-button-cell button {
@@ -65,4 +70,24 @@
 
 .error-massage{
     color: #d93242;
+}
+
+.title-table {
+    display: inline-block;
+    margin: 0 0 10px;
+}
+
+.filter{
+    display: inline-block;
+    margin: 0 0 10px;
+    float: right;
+}
+
+.filter input{
+    width: 200px;
+}
+
+.new-contact-form button:hover{
+    background-color: #dad55e;
+    font-weight: bold;
 }

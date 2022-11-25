@@ -1,8 +1,8 @@
 $(function () {
-    var surnameElement = $("#inputSurname");
-    var nameElement = $("#inputName");
-    var phoneNumberElement = $("#inputPhoneNumber");
-    var tbody = $(".tbody");
+    var surnameElement = $("#input-surname");
+    var nameElement = $("#input-name");
+    var phoneNumberElement = $("#input-phone-number");
+    var contactLines = $(".contact-lines");
     var saveButton = $("#save-button");
     var counter = 1;
     var errorMassage = $(".error-massage");
@@ -24,22 +24,19 @@ $(function () {
             return;
         }
 
-        console.log("процесс прошел дальше")
 
         item.html("<td class='counter'></td>" +
-            "<td class='newSurname'></td>" +
-            "<td class='newName'></td>" +
-            "<td class='newPhoneNumber'></td>" +
-            "<td class='delete-button-cell'>" +
-            "<input type='checkbox' class='checkbox-flag'/>" +
-            "</td>");
+            "<td class='new-surname'></td>" +
+            "<td class='new-name'></td>" +
+            "<td class='new-phone-number'></td>" +
+            "<td><input type='checkbox' class='checkbox-flag'/></td>");
 
         item.find(".counter").text(counter);
-        item.find(".newSurname").text(surnameElementText);
-        item.find(".newName").text(nameElementText);
-        item.find(".newPhoneNumber").text(phoneNumberElementText);
+        item.find(".new-surname").text(surnameElementText);
+        item.find(".new-name").text(nameElementText);
+        item.find(".new-phone-number").text(phoneNumberElementText);
 
-        tbody.append(item);
+        contactLines.append(item);
         surnameElement.val("");
         nameElement.val("");
         phoneNumberElement.val("");
@@ -55,24 +52,22 @@ $(function () {
             if (surname.length === 0) {
                 surnameElement.css({border: "#d93242 solid 2px"});
                 errorMassageText += "Заполните фамилию! ";
-                errorMassage.text(errorMassageText);
             }
 
             if (name.length === 0) {
                 nameElement.css({border: "#d93242 solid 2px"});
                 errorMassageText += "Заполните имя! ";
-                errorMassage.text(errorMassageText);
             }
 
             if (phoneNumber.length === 0) {
                 phoneNumberElement.css({border: "#d93242 solid 2px"});
                 errorMassageText += "Заполните телефон!";
-                errorMassage.text(errorMassageText);
             }
 
+            errorMassage.text(errorMassageText);
             isError = true;
         } else {
-            tbody.find(".newPhoneNumber").each(function () {
+            contactLines.find(".new-phone-number").each(function () {
                 if ($(this).text() === phoneNumber) {
                     errorMassage.css({display: "block"});
                     errorMassage.text("Данный контакт уже зарегистрирован!");
@@ -85,13 +80,12 @@ $(function () {
     }
 
     $(".delete-button").click(function () {
-        tbody.find('tr').each(function () {
+        contactLines.find('tr').each(function () {
             if ($(this).find(".checkbox-flag").prop('checked')) {
                 checkedItems.push($(this));
             }
         });
 
-        console.log(checkedItems);
         if (checkedItems.length !== 0 || checkedItems.length !== 0) {
             dialog.dialog("open");
         }
@@ -109,9 +103,8 @@ $(function () {
                         counter--;
                     })
 
-                    console.log(counter);
                     if (counter !== 0) {
-                        tbody.find(".counter").each(function (i) {
+                        contactLines.find(".counter").each(function (i) {
                             $(this).text(i + 1);
                         });
                     }
@@ -131,10 +124,17 @@ $(function () {
     });
 
     $("#all-selected-checkbox").click(function () {
-        if(this.checked){
+        if (this.checked) {
             $(".checkbox-flag").prop('checked', true);
-        } else{
+        } else {
             $(".checkbox-flag").prop('checked', false);
         }
     });
-})
+
+    $(".filter input").on('keyup', function () {
+        var filterText = $(this).val().toLowerCase();
+        $('.contact-lines tr').filter(function () {
+            $(this).toggle($(this).text().toLowerCase().indexOf(filterText) > -1);
+        });
+    });
+});
