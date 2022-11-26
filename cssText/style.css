@@ -10,8 +10,7 @@ body {
 
 .course-information {
     background-color: #FEEED6;
-    width: 90%;
-    max-width:720px;
+    max-width: 720px;
     margin: auto;
     padding: 5px 10px 0 10px;
 }
@@ -34,5 +33,5 @@ body {
 }
 
 .course-information p {
-    margin: 10px 0 10px 0;
+    margin: 10px 0;
 }
