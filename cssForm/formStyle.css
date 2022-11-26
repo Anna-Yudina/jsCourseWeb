@@ -1,7 +1,6 @@
 .block {
     margin: auto;
     max-width: 735px;
-    width: 90%;
 }
 
 .title {
@@ -33,11 +32,10 @@
 }
 
 .unit {
-    width: 100%;
+    width: 97%;
     font-size: 14px;
     border: none;
-    padding: 9px 0 9px 0;
-    text-indent: 9px;
+    padding: 9px;
 }
 
 .instruction {
@@ -60,8 +58,7 @@ textarea.comment_area::placeholder {
     color: #FFF;
     border: none;
     font-weight: bold;
-    width: 150px;
-    padding: 8px;
+    padding: 8px 12px;
     font-size: 14px;
     cursor: pointer;
 }
