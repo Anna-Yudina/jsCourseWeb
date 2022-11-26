@@ -1,5 +1,5 @@
 (function () {
-    var countriesObjectsArray = [
+    var countries = [
         {
             name: "Россия",
             cities: [
@@ -32,33 +32,30 @@
                 {name: "Паттайя", population: 119000}
             ]
         }
-    ]
+    ];
 
-    function getCountriesMaxCountCities(array) {
-        var max = Math.max.apply(null, array.map(function (item) {
-            return item.cities.length;
+    function getCountriesWithMaxCountCities(countriesArray) {
+        var maxCountCities = Math.max.apply(null, countriesArray.map(function (country) {
+            return country.cities.length;
         }));
 
-        return array.filter(function (item) {
-            return item.cities.length === max;
+        return countriesArray.filter(function (country) {
+            return country.cities.length === maxCountCities;
         });
     }
 
-    function getCountriesPopulationArray(array) {
-        var countriesPopulationArray = [];
+    function getCountriesPopulation(countriesArray) {
+        var countriesPopulation = {};
 
-        array.forEach(function (item, i) {
-            countriesPopulationArray[i] = {
-                name: array[i].name,
-                population: array[i].cities.reduce(function (sum, item) {
-                    return sum + item.population;
-                }, 0)
-            }
-        })
+        countriesArray.forEach(function (country, i) {
+            countriesPopulation[countriesArray[i].name] = countriesArray[i].cities.reduce(function (sum, city) {
+                return sum + city.population;
+            }, 0)
+        });
 
-        return countriesPopulationArray;
+        return countriesPopulation;
     }
 
-    console.log(getCountriesPopulationArray(countriesObjectsArray))
-    console.log(getCountriesMaxCountCities(countriesObjectsArray))
-})()
+    console.log(getCountriesPopulation(countries));
+    console.log(getCountriesWithMaxCountCities(countries));
+})();
