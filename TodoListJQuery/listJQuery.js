@@ -20,7 +20,7 @@ $(function () {
 
         function setEditMode() {
             item.html("<input class='edit-text' type='text'>" +
-                "<span class='button-span'>" +
+                "<span class='buttons'>" +
                 "<button class='ok-button' type='button'>&#10004;</button>" +
                 "<button class='cancel-button' type='button'>&#8634;</button></span>");
 
@@ -48,7 +48,7 @@ $(function () {
 
         function setViewMode() {
             item.html("<span class='todo-text'></span>" +
-                "<span class='button-span'>" +
+                "<span class='buttons'>" +
                 "<button class='delete-button' type='button'>&#10006;</button> " +
                 "<button class='edit-button' type='button'>&#9998;</button></span>");
 
