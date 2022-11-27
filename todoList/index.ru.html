@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <title>TODO List</title>
     <link href="normalize.css" rel="stylesheet">
-    <link href="listStyle.css" rel="stylesheet">
-    <script src="listJs.js"></script>
+    <link href="list.css" rel="stylesheet">
+    <script defer src="list.js"></script>
 </head>
 <body>
 <div class="list-block">
@@ -14,12 +14,11 @@
         <label>Введите текст:
             <input id="new-text" type="text" maxlength="85">
         </label>
-        <div style="display: none" class="error-massage">Текст не должен быть пустым!</div>
-        <button class='add-button' id="add-button" type="button">OK</button>
+        <div style="display: none" class="error-message">Текст не должен быть пустым!</div>
+        <button class="add-button" id="add-button" type="button">OK</button>
     </form>
-    <div class="list-div">
-        <ul id="todo-list">
-        </ul>
+    <div class="todo-list-block">
+        <ul id="todo-list"></ul>
     </div>
 </div>
 </body>
