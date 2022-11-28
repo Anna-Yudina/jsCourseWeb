@@ -1,33 +1,33 @@
 document.addEventListener("DOMContentLoaded", function () {
-    var celsiusTextItem = document.getElementById("celsiusText");
-    var kelvinTextItem = document.getElementById("kelvinText");
-    var fahrenheitTextItem = document.getElementById("fahrenheitText");
+    var celsiusTextItem = document.getElementById("celsius-text");
+    var kelvinTextItem = document.getElementById("kelvin-text");
+    var fahrenheitTextItem = document.getElementById("fahrenheit-text");
 
-    var celsiusButtonItem = document.getElementById("celsiusButton");
-    var kelvinButtonItem = document.getElementById("kelvinButton");
-    var fahrenheitButtonItem = document.getElementById("fahrenheitButton");
+    var celsiusButtonItem = document.getElementById("celsius-button");
+    var kelvinButtonItem = document.getElementById("kelvin-button");
+    var fahrenheitButtonItem = document.getElementById("fahrenheit-button");
 
-    var nullErrorMassage = document.querySelector(".null-error-massage");
-    var notNumberErrorMassage = document.querySelector(".not-number-error-massage");
+    var emptyErrorMessage = document.querySelector(".empty-error-message");
+    var notNumberErrorMessage = document.querySelector(".not-number-error-message");
 
-    function returnStartValue() {
-        nullErrorMassage.style.display = "none";
-        notNumberErrorMassage.style.display = "none";
-        celsiusTextItem.style.borderColor = "#000";
-        kelvinTextItem.style.borderColor = "#000";
-        fahrenheitTextItem.style.borderColor = "#000";
+    function setInitialValues() {
+        emptyErrorMessage.style.display = "none";
+        notNumberErrorMessage.style.display = "none";
+        celsiusTextItem.classList.remove('red-border');
+        kelvinTextItem.classList.remove('red-border');
+        fahrenheitTextItem.classList.remove('red-border');
     }
 
-    function executeValidation(temperatureText, temperatureTextItem) {
+    function validate(temperatureText, temperatureTextItem) {
         var isError = false;
 
         if (temperatureText.length === 0) {
-            nullErrorMassage.style.display = "block";
-            temperatureTextItem.style.borderColor = "#FF0000";
+            emptyErrorMessage.style.display = "block";
+            temperatureTextItem.classList.add(' red-border');
             isError = true;
         } else if (String(parseFloat(temperatureText)) !== String(temperatureText)) {
-            notNumberErrorMassage.style.display = "block";
-            temperatureTextItem.style.borderColor = "#FF0000";
+            notNumberErrorMessage.style.display = "block";
+            temperatureTextItem.classList.add(' red-border');
             isError = true;
         }
 
@@ -37,8 +37,8 @@ document.addEventListener("DOMContentLoaded", function () {
     celsiusButtonItem.addEventListener("click", function () {
         var celsiusText = celsiusTextItem.value.trim();
 
-        returnStartValue();
-        var isError = executeValidation(celsiusText, celsiusTextItem);
+        setInitialValues();
+        var isError = validate(celsiusText, celsiusTextItem);
 
         if (isError) {
             kelvinTextItem.value = "";
@@ -53,8 +53,8 @@ document.addEventListener("DOMContentLoaded", function () {
     kelvinButtonItem.addEventListener("click", function () {
         var kelvinText = kelvinTextItem.value.trim();
 
-        returnStartValue();
-        var isError = executeValidation(kelvinText, kelvinTextItem);
+        setInitialValues();
+        var isError = validate(kelvinText, kelvinTextItem);
 
         if (isError) {
             celsiusTextItem.value = "";
@@ -69,8 +69,8 @@ document.addEventListener("DOMContentLoaded", function () {
     fahrenheitButtonItem.addEventListener("click", function () {
         var fahrenheitText = fahrenheitTextItem.value.trim();
 
-        returnStartValue();
-        var isError = executeValidation(fahrenheitText, fahrenheitTextItem);
+        setInitialValues();
+        var isError = validate(fahrenheitText, fahrenheitTextItem);
 
         if (isError) {
             celsiusTextItem.value = "";

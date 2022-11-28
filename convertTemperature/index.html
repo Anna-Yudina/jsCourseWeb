@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link href="normalize.css" rel="stylesheet">
+    <link href="temperature.css" rel="stylesheet">
+    <script defer src="temperature.js"></script>
+</head>
+<body>
+<div class="scale">
+    <h3 class="title">Перевод температур:</h3>
+    <div class="text-block">
+        <label for="celsius-text">Температура в Цельсиях:</label>
+    </div>
+    <input id="celsius-text" type="text">
+    <button id="celsius-button" type="button">OK</button>
+
+    <div class="text-block">
+        <label for="kelvin-text">Температура в Кельвинах:</label>
+    </div>
+    <input id="kelvin-text" type="text">
+    <button id="kelvin-button" type="button">OK</button>
+
+    <div class="text-block">
+        <label for="fahrenheit-text">Температура в Фаренгейтах:</label>
+    </div>
+    <input id="fahrenheit-text" type="text">
+    <button id="fahrenheit-button" type="button">OK</button>
+
+    <div style="display: none" class="empty-error-message">Вы ничего не ввели!</div>
+    <div style="display: none" class="not-number-error-message">Необходимо ввести число!</div>
+</div>
+</body>
+</html>
