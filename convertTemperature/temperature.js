@@ -23,11 +23,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (temperatureText.length === 0) {
             emptyErrorMessage.style.display = "block";
-            temperatureTextItem.classList.add(' red-border');
+            temperatureTextItem.classList.add('red-border');
             isError = true;
-        } else if (String(parseFloat(temperatureText)) !== String(temperatureText)) {
+        } else if (!Number(temperatureText)) {
             notNumberErrorMessage.style.display = "block";
-            temperatureTextItem.classList.add(' red-border');
+            temperatureTextItem.classList.add('red-border');
             isError = true;
         }
 
