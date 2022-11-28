@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', function () {
     var errorMessage = document.querySelector('.error-message');
 
     addButton.addEventListener('click', function () {
-        putLine()
+        putLine();
     });
 
     newText.addEventListener('keydown', (e) => {
