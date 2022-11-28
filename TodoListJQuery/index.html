@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>TODO List</title>
-    <script src="jquery-3.6.1.js"></script>
-    <script src="listJQuery.js"></script>
+    <script defer src="jquery-3.6.1.js"></script>
+    <script defer src="list.js"></script>
     <link href="normalize.css" rel="stylesheet">
-    <link href="listStyleJQuery.css" rel="stylesheet">
+    <link href="list.css" rel="stylesheet">
 </head>
 <body>
 <div class="list-block">
@@ -15,8 +15,8 @@
         <label>Введите текст:
             <input id="new-text" type="text" maxlength="85">
         </label>
-        <div style="display: none" class="error-massage">Текст не должен быть пустым!</div>
-        <button class='add-button' id="add-button" type="button">OK</button>
+        <div style="display: none" class="error-message">Текст не должен быть пустым!</div>
+        <button class="add-button" id="add-button" type="button">OK</button>
     </form>
     <div class="todo-list-block">
         <ul id="todo-list"></ul>

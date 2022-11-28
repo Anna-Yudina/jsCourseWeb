@@ -1,5 +1,5 @@
 .list-block {
-    width: 70%;
+    width: 100%;
     max-width: 750px;
     margin: auto;
     background-color: #FEEED6;
@@ -8,7 +8,8 @@
     box-sizing: border-box;
 }
 
-.list-title::before, .list-title::after {
+.list-title::before,
+.list-title::after {
     content: "  \2749 \2749 \2749  ";
     color: #378DB2;
 }
@@ -43,63 +44,72 @@
 }
 
 .delete-button {
-    color: #FF0000;
+    color: #F00;
+    float: right;
 }
 
 .ok-button {
     color: #00D678;
+    float: right;
 }
 
 .cancel-button {
     font-weight: bold;
     color: #964b00;
+    float: right;
+}
+
+.edit-button {
+    float: right;
 }
 
 .todo-list-block {
     margin: 10px;
     text-align: left;
-    width: 100%;
     max-width: 730px;
+    box-sizing: border-box;
 }
 
 .todo-list-block ul {
     padding: 0;
     margin: 0;
-    list-style-type: none;
 }
 
 .todo-list-block li {
     list-style-type: none;
     border-bottom: 1px solid #000;
-    margin: 5px 0 5px 0;
-    height: 25px;
-    text-indent: 5px;
+    padding: 10px;
+    box-sizing: border-box;
 }
 
 .todo-text {
     line-height: 25px;
+    overflow: hidden;
+    display: inline-block;
+    width: 85%;
 }
 
 .buttons {
-    float: right;
     line-height: 25px;
+    display: inline-block;
+    float: right;
 }
 
 .add-button {
     width: 45px;
 }
 
-.edit-text{
+.edit-text {
     width: 90%;
     padding: 0;
     border-color: #000;
+    overflow: hidden;
 }
 
-.error-massage{
-    color: #FF0000;
+.error-message {
+    color: #F00;
 }
 
-.list-div{
-    box-sizing: border-box;
-    margin: 10px;
+.red-border {
+    border-color: #F00;
 }
