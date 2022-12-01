@@ -3,7 +3,7 @@
 
     console.log("originalArray = " + originalArray);
     console.log("descendingSortArray = " + sortDescending(originalArray));
-    console.log("fiveFirstElementsArray = " + getArrayFirstElements(originalArray));
+    console.log("fiveFirstElementsArray = " + getArrayFiveFirstElements(originalArray));
     console.log("fiveLastElementsArray = " + getArrayLastFiveElements(originalArray));
     console.log("evenElementsSum = " + getEvenNumbersSum(originalArray));
     console.log("squareEvenNumbersArray = " + getSquaresEvenNumbersArray(createArray(100)));
@@ -14,7 +14,7 @@
         });
     }
 
-    function getArrayFirstElements(array) {
+    function getArrayFiveFirstElements(array) {
         return array.slice(0, 5);
     }
 
