@@ -1,6 +1,7 @@
 .block {
     margin: auto;
     max-width: 735px;
+    box-sizing: border-box;
 }
 
 .title {
@@ -32,7 +33,8 @@
 }
 
 .unit {
-    width: 97%;
+    width: 100%;
+    max-width: 681px;
     font-size: 14px;
     border: none;
     padding: 9px;
@@ -70,4 +72,8 @@ textarea.comment_area::placeholder {
 .paragraph_button {
     text-align: right;
     margin: 5px 0 0 0;
+}
+
+.request label {
+    display: block;
 }
