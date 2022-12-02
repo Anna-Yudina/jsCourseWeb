@@ -8,10 +8,9 @@
     <script defer src="script.js"></script>
 </head>
 <body>
-<h1>Привет! </h1>
-<button class="button" type="button">Нажми</button>
-<div style="display: none" class="shadow">Здесь был Вася!</div>
+<h1>Задачи по underscore! </h1>
 <div>
+    <h2>Дан список людей:</h2>
     name: "Ivan", age: 20<br>
     name: "Petr", age: 30<br>
     name: "Semen", age: 17<br>
@@ -31,17 +30,18 @@
 <div class="subTask2">
    <p>2. Получить список людей с возрастом от 20 до 30
     включительно, отсортировать их по возрастанию
-    возраста</p>
+    возраста: <span class="answer2"></span></p>
 </div>
 <div class="subTask3">
     <p>3. Получить список уникальных имен людей с возрастом
         от 20 до 30 включительно, отсортировать его по
-        убыванию</p>
+        убыванию: <span class="answer3"></span></p>
 </div>
 <div class="subTask4">
     <p>4. Получить объект, в котором ключами будут имена
         людей, а значениями – количество людей с этим
-        именем</p>
+        именем: <span class="answer4"></span></p>
 </div>
+<button type="button" class="get-answer">Получить ответы</button>
 </body>
 </html>
