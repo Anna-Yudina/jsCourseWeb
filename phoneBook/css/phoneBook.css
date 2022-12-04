@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .new-contact-form {
     width: 95%;
     max-width: 750px;
@@ -7,17 +11,21 @@
     border-radius: 5px;
 }
 
-.title-form {
+.form-title {
     font-family: Arial, serif;
     font-size: 24px;
 }
 
 .input-block input{
-    margin: 5px;
+    margin: 5px 5px 5px 0;
     border: 1px solid #767676;
 }
 
-.contact-table {
+.input-block div{
+    display: inline-block;
+}
+
+.contacts-block {
     width: 95%;
     max-width: 750px;
     margin: auto;
@@ -28,51 +36,40 @@
     padding: 10px;
 }
 
-.contact-table th:first-child {
+.contacts-block th:first-child {
     width: 50px;
 }
 
-.contact-table th:last-child {
+.contacts-block th:last-child {
     width: 50px;
 }
 
-.contact-table th {
+.contacts-block th:nth-child(2) {
+    width: 50px;
+}
+
+.contacts-block th {
     width: 250px;
     background-color: #7BA00C;
     color: #FFF;
     text-shadow: #000 2px 2px 4px;
 }
 
-.contact-table td {
+.contacts-block td {
     background-color: #c3d8a6;
     text-indent: 5px;
 }
 
-.contact-table td:last-child {
+.contacts-block td:first-child {
     text-indent: 0;
     text-align: center;
 }
 
-.delete-button-cell button {
-    background-color: #c3d8a6;
-    border: none;
-}
-
-.delete-button {
-    color: #d93242;
-    float: right;
-}
-
-.delete-button:hover {
-    font-weight: bold;
-    text-shadow: #000 1px 1px 2px;
-}
-
-.error-massage{
+.error-message{
     color: #d93242;
 }
 
-.title-table {
+.table-title {
     display: inline-block;
     margin: 0 0 10px;
 }
@@ -87,7 +84,38 @@
     width: 200px;
 }
 
+.new-contact-form button{
+   margin: 2px;
+}
+
 .new-contact-form button:hover{
     background-color: #dad55e;
     font-weight: bold;
+}
+
+.contacts-block table {
+    counter-reset: trCount;
+}
+
+.selected-delete-button-paragraph{
+    margin: 0;
+}
+
+.selected-delete-button {
+    color: #d93242;
+}
+
+.selected-delete-button:hover {
+    font-weight: bold;
+    text-shadow: #000 1px 1px 2px;
+}
+
+.delete-button {
+    background-color: #c3d8a6;
+}
+
+.delete-button:hover{
+    border-color: #F00;
+    color: #F00;
+    background-color: #7BA00C;
 }
