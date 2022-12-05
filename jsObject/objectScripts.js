@@ -34,7 +34,7 @@
         }
     ];
 
-    function getCountriesWithMaxCountCities(countries) {
+    function getCountriesWithMaxCitiesCount(countries) {
         var maxCitiesCount = Math.max.apply(null, countries.map(function (country) {
             return country.cities.length;
         }));
@@ -57,5 +57,5 @@
     }
 
     console.log(getCountriesPopulation(countries));
-    console.log(getCountriesWithMaxCountCities(countries));
+    console.log(getCountriesWithMaxCitiesCount(countries));
 })();
