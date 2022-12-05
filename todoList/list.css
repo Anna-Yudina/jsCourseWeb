@@ -16,11 +16,10 @@
 
 .list-form {
     margin: 10px;
-    position: relative;
 }
 
 .list-form input {
-    width: 90%;
+    width: 85%;
     text-align: left;
 }
 
@@ -30,7 +29,6 @@
 }
 
 .list-form button {
-    position: absolute;
     right: 0;
     top: 18px;
 }
@@ -106,7 +104,8 @@
     overflow: hidden;
 }
 
-.error-message {
+.error-message,
+.edit-error-message{
     color: #F00;
 }
 
