@@ -17,12 +17,12 @@ $(function () {
         var nameInputText = nameInput.val().trim();
         var phoneNumberInputText = phoneNumberInput.val().trim();
 
-        surnameErrorMessage.css({display: "none"});
-        nameErrorMessage.css({display: "none"});
-        phoneNumberErrorMessage.css({display: "none"});
-        surnameInput.css({border: "#767676 solid 1px"});
-        nameInput.css({border: "#767676 solid 1px"});
-        phoneNumberInput.css({border: "#767676 solid 1px"});
+        surnameErrorMessage.hide();
+        nameErrorMessage.hide();
+        phoneNumberErrorMessage.hide();
+        surnameInput.removeClass("red-border");
+        nameInput.removeClass("red-border");
+        phoneNumberInput.removeClass("red-border");
 
         if (checkInput(surnameInputText, nameInputText, phoneNumberInputText)) {
             return;
@@ -54,23 +54,23 @@ $(function () {
 
     function checkInput(surname, name, phoneNumber) {
         var isError = false;
+
         if (surname.length === 0 || name.length === 0 || phoneNumber.length === 0) {
-            
             if (surname.length === 0) {
-                surnameInput.css({border: "#d93242 solid 2px"});
-                surnameErrorMessage.css({display: "block"});
+                surnameErrorMessage.show();
+                surnameInput.addClass("red-border");
                 surnameErrorMessage.text("Заполните фамилию!");
             }
 
             if (name.length === 0) {
-                nameInput.css({border: "#d93242 solid 2px"});
-                nameErrorMessage.css({display: "block"});
+                nameInput.addClass("red-border");
+                nameErrorMessage.show();
                 nameErrorMessage.text("Заполните имя!");
             }
 
             if (phoneNumber.length === 0) {
-                phoneNumberInput.css({border: "#d93242 solid 2px"});
-                phoneNumberErrorMessage.css({display: "block"});
+                phoneNumberInput.addClass("red-border");
+                phoneNumberErrorMessage.show();
                 phoneNumberErrorMessage.text("Заполните телефон!");
             }
 
@@ -78,11 +78,12 @@ $(function () {
         } else {
             contactsRows.find(".new-phone-number").each(function () {
                 if ($(this).text() === phoneNumber) {
-                    phoneNumberErrorMessage.css({display: "block"});
+                    phoneNumberErrorMessage.show();
+                    phoneNumberInput.addClass("red-border");
                     phoneNumberErrorMessage.text("Данный номер уже зарегистрирован!");
                     isError = true;
                 }
-            })
+            });
         }
 
         return isError;
@@ -114,7 +115,7 @@ $(function () {
                     } else{
                         checkedItems.forEach(function (el) {
                             el.remove();
-                        })
+                        });
 
                         setTableNumbering();
 
@@ -128,17 +129,15 @@ $(function () {
                 text: "Отмена",
                 click: function () {
                     confirmationDeleteDialogElement.dialog("close");
+                    checkedItems = [];
+                    console.log(checkedItems);
                 }
             }
         ]
     });
 
     $("#all-selected-checkbox").click(function () {
-        if (this.checked) {
-            $(".checkbox-flag").prop("checked", true);
-        } else {
-            $(".checkbox-flag").prop("checked", false);
-        }
+        this.checked ? $(".checkbox-flag").prop("checked", true) : $(".checkbox-flag").prop("checked", false);
     });
 
     $(".filter input").on("keyup", function () {

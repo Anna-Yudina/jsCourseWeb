@@ -16,7 +16,7 @@
     font-size: 24px;
 }
 
-.input-block input{
+.input-item{
     margin: 5px 5px 5px 0;
     border: 1px solid #767676;
 }
@@ -118,4 +118,8 @@
     border-color: #F00;
     color: #F00;
     background-color: #7BA00C;
+}
+
+.red-border {
+    border: 2px solid #d93242;
 }
