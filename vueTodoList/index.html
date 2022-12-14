@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Todo List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script defer src="node_modules/vue/dist/vue.min.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+<div id="app" class="container">
+    <h1>Todo List</h1>
+    <form @submit.prevent="addNewTodo" class="mb-2">
+        <div>
+            <label class="form-label">New TODO Text</label>
+            <div class="d-flex">
+                <input v-model="newTodoText" class="form-control me-2" type="text" :class="{'is-invalid': isNewTodoTextInvalid}">
+                <button class="btn btn-primary w-auto">Add</button>
+            </div>
+        </div>
+    </form>
+
+
+    <ul class="list-unstyled">
+        <li v-cloak v-for="(item, index) in items" :key="item.id" class="mb-1">
+            {{ index + 1 }}. {{ item.text }}
+            <button class="btn btn-primary" @click="editItem(item)" type="button">Редактирование</button>
+            <button class="btn btn-danger" @click="deleteItem(item)" type="button" title="Удаление">X</button>
+        </li>
+    </ul>
+
+</div>
+</body>
+</html>
