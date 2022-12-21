@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue Todo List</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="node_modules/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="style.css">
+    <script defer src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script defer src="node_modules/vue/dist/vue.min.js"></script>
+    <script defer src="script.js"></script>
+</head>
+<body>
+<div class="container" id="container">
+    <h1>TODO LIST</h1>
+    <form class="form-control" @submit.prevent="add">
+        <p>Введите текст:</p>
+        <div class="row">
+            <div class="col">
+                <input type="text" class="form-control" v-bind:class="{ 'is-invalid': isInputTextInvalid }"
+                       v-model="inputText">
+                <div class="invalid-feedback">Вы ничего не ввели!</div>
+            </div>
+            <div class="col-auto">
+                <button class="btn btn-success all-button-style">Добавить</button>
+            </div>
+        </div>
+    </form>
+    <div>
+        <ul class="list-group">
+            <todo-item v-for="item in items"
+                       :key="item.id"
+                       :item="item"
+                       @delete-item="deleteItem"
+                       @save-item="saveItem"></todo-item>
+        </ul>
+    </div>
+</div>
+<script id="todo-item-template" type="text/x-template">
+    <li class="list-group-item">
+        <div class="row" v-if="!isEditing">
+            <div class="col">
+                <span>{{ item.text }}</span>
+            </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-primary all-button-style" @click="editItem()">Изменить</button>
+                <button type="button" class="btn btn-danger all-button-style" @click="$emit('delete-item', item)">
+                    Удалить
+                </button>
+            </div>
+        </div>
+        <div class="row" v-else>
+            <div class="col">
+                <input type="text" v-model="editingText" class="form-control"
+                       :class="{ 'is-invalid': isInvalid}">
+                <div class="invalid-feedback">Вы ничего не ввели!</div>
+            </div>
+            <div class="col-auto">
+                <button type="button" class="btn btn-primary all-button-style" @click="isEditing = false">
+                    Отменить
+                </button>
+                <button type="button" class="btn btn-success all-button-style" @click="saveItem(item)">Сохранить
+                </button>
+            </div>
+        </div>
+    </li>
+</script>
+</body>
+</html>
