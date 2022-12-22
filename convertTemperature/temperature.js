@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", function () {
     function setInitialValues() {
         emptyErrorMessage.style.display = "none";
         notNumberErrorMessage.style.display = "none";
-        celsiusTextItem.classList.remove('red-border');
-        kelvinTextItem.classList.remove('red-border');
-        fahrenheitTextItem.classList.remove('red-border');
+        celsiusTextItem.classList.remove("red-border");
+        kelvinTextItem.classList.remove("red-border");
+        fahrenheitTextItem.classList.remove("red-border");
     }
 
     function validate(temperatureText, temperatureTextItem) {
@@ -23,11 +23,11 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (temperatureText.length === 0) {
             emptyErrorMessage.style.display = "block";
-            temperatureTextItem.classList.add('red-border');
+            temperatureTextItem.classList.add("red-border");
             isError = true;
-        } else if (!Number(temperatureText)) {
+        } else if (isNaN(temperatureText)) {
             notNumberErrorMessage.style.display = "block";
-            temperatureTextItem.classList.add('red-border');
+            temperatureTextItem.classList.add("red-border");
             isError = true;
         }
 
