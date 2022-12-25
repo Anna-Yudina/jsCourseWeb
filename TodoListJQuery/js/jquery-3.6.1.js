@@ -370,7 +370,7 @@ jQuery.extend( {
 		return true;
 	},
 
-	// Evaluates a script in a provided context; falls back to the global one
+	// Evaluates a script1 in a provided context; falls back to the global one
 	// if not specified.
 	globalEval: function( code, options, doc ) {
 		DOMEval( code, { nonce: options && options.nonce }, doc );
@@ -5073,7 +5073,7 @@ function buildFragment( elems, context, scripts, selection, ignored ) {
 		// Append to fragment
 		tmp = getAll( fragment.appendChild( elem ), "script" );
 
-		// Preserve script evaluation history
+		// Preserve script1 evaluation history
 		if ( attached ) {
 			setGlobalEval( tmp );
 		}
@@ -5970,7 +5970,7 @@ function manipulationTarget( elem, content ) {
 	return elem;
 }
 
-// Replace/restore the type attribute of script elements for safe DOM manipulation
+// Replace/restore the type attribute of script1 elements for safe DOM manipulation
 function disableScript( elem ) {
 	elem.type = ( elem.getAttribute( "type" ) !== null ) + "/" + elem.type;
 	return elem;
@@ -6113,7 +6113,7 @@ function domManip( collection, args, callback, ignored ) {
 							}
 						} else {
 
-							// Unwrap a CDATA section containing script contents. This shouldn't be
+							// Unwrap a CDATA section containing script1 contents. This shouldn't be
 							// needed as in XML documents they're already not visible when
 							// inspecting element contents and in HTML documents they have no
 							// meaning but we're preserving that logic for backwards compatibility.
@@ -6187,7 +6187,7 @@ jQuery.extend( {
 			}
 		}
 
-		// Preserve script evaluation history
+		// Preserve script1 evaluation history
 		destElements = getAll( clone, "script" );
 		if ( destElements.length > 0 ) {
 			setGlobalEval( destElements, !inPage && getAll( elem, "script" ) );
@@ -9761,7 +9761,7 @@ jQuery.extend( {
 				response = ajaxHandleResponses( s, jqXHR, responses );
 			}
 
-			// Use a noop converter for missing script but not if jsonp
+			// Use a noop converter for missing script1 but not if jsonp
 			if ( !isSuccess &&
 				jQuery.inArray( "script", s.dataTypes ) > -1 &&
 				jQuery.inArray( "json", s.dataTypes ) < 0 ) {
@@ -10161,7 +10161,7 @@ jQuery.ajaxPrefilter( function( s ) {
 	}
 } );
 
-// Install script dataType
+// Install script1 dataType
 jQuery.ajaxSetup( {
 	accepts: {
 		script: "text/javascript, application/javascript, " +
@@ -10188,7 +10188,7 @@ jQuery.ajaxPrefilter( "script", function( s ) {
 	}
 } );
 
-// Bind script tag hack transport
+// Bind script1 tag hack transport
 jQuery.ajaxTransport( "script", function( s ) {
 
 	// This transport only deals with cross domain or forced-by-attrs requests
@@ -10196,7 +10196,7 @@ jQuery.ajaxTransport( "script", function( s ) {
 		var script, callback;
 		return {
 			send: function( _, complete ) {
-				script = jQuery( "<script>" )
+				script = jQuery( "<script1>" )
 					.attr( s.scriptAttrs || {} )
 					.prop( { charset: s.scriptCharset, src: s.url } )
 					.on( "load error", callback = function( evt ) {
@@ -10262,7 +10262,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 			s.url += ( rquery.test( s.url ) ? "&" : "?" ) + s.jsonp + "=" + callbackName;
 		}
 
-		// Use data converter to retrieve json after script execution
+		// Use data converter to retrieve json after script1 execution
 		s.converters[ "script json" ] = function() {
 			if ( !responseContainer ) {
 				jQuery.error( callbackName + " was not called" );
@@ -10309,7 +10309,7 @@ jQuery.ajaxPrefilter( "json jsonp", function( s, originalSettings, jqXHR ) {
 			responseContainer = overwritten = undefined;
 		} );
 
-		// Delegate to script
+		// Delegate to script1
 		return "script";
 	}
 } );
@@ -10854,7 +10854,7 @@ jQuery.trim = function( text ) {
 
 
 // Register as a named AMD module, since jQuery can be concatenated with other
-// files that may use define, but not via a proper concatenation script that
+// files that may use define, but not via a proper concatenation script1 that
 // understands anonymous AMD modules. A named AMD is safest and most robust
 // way to register. Lowercase jquery is used because AMD module names are
 // derived from file names, and jQuery is normally delivered in a lowercase
