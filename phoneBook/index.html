@@ -13,30 +13,20 @@
 <body>
 <div class="new-contact-form">
     <h1 class="form-title">Введите данные нового контакта:</h1>
-    <table class="input-block">
-        <tr>
-            <td>
-                <input type="text" id="input-surname" placeholder="Фамилия" class="input-item">
-            </td>
-            <td>
-                <input type="text" id="input-name" placeholder="Имя" class="input-item">
-            </td>
-            <td>
-                <input type="text" id="input-phone-number" placeholder="Телефон" class="input-item">
-            </td>
-        </tr>
-        <tr>
-            <td>
-                <div style="display: none" class="surname-error-message error-message">error</div>
-            </td>
-            <td>
-                <div style="display: none" class="name-error-message error-message">error</div>
-            </td>
-            <td>
-                <div style="display: none" class="phone-number-error-message error-message">error</div>
-            </td>
-        </tr>
-    </table>
+    <div class="input-block">
+        <div>
+            <div><input type="text" id="input-surname" placeholder="Фамилия" class="input-item"></div>
+            <div style="visibility: hidden" class="surname-error-message error-message">error</div>
+        </div>
+        <div>
+            <div><input type="text" id="input-name" placeholder="Имя" class="input-item"></div>
+            <div style="visibility: hidden" class="name-error-message error-message">error</div>
+        </div>
+        <div>
+            <div><input type="text" id="input-phone-number" placeholder="Телефон" class="input-item"></div>
+            <div style="visibility: hidden" class="phone-number-error-message error-message">error</div>
+        </div>
+    </div>
     <p>
         <button type="button" id="save-button">Сохранить</button>
     </p>

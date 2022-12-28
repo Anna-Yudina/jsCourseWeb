@@ -17,9 +17,9 @@ $(function () {
         var nameInputText = nameInput.val().trim();
         var phoneNumberInputText = phoneNumberInput.val().trim();
 
-        surnameErrorMessage.hide();
-        nameErrorMessage.hide();
-        phoneNumberErrorMessage.hide();
+        surnameErrorMessage.css("visibility", "hidden");
+        nameErrorMessage.css("visibility", "hidden");
+        phoneNumberErrorMessage.css("visibility", "hidden");
         surnameInput.removeClass("red-border");
         nameInput.removeClass("red-border");
         phoneNumberInput.removeClass("red-border");
@@ -30,14 +30,14 @@ $(function () {
 
         item.html("<td><input type='checkbox' class='checkbox-flag'/></td>" +
             "<td class='counter'></td>" +
-            "<td class='new-surname'></td>" +
-            "<td class='new-name'></td>" +
-            "<td class='new-phone-number'></td>" +
-            "<td><button class='delete-button' type='button'>&#10006;</button></td>");
+            "<td class='surname'></td>" +
+            "<td class='name'></td>" +
+            "<td class='phone-number'></td>" +
+            "<td><button class='delete-button' type='button' title='Удаление'>&#10006;</button></td>");
 
-        item.find(".new-surname").text(surnameInputText);
-        item.find(".new-name").text(nameInputText);
-        item.find(".new-phone-number").text(phoneNumberInputText);
+        item.find(".surname").text(surnameInputText);
+        item.find(".name").text(nameInputText);
+        item.find(".phone-number").text(phoneNumberInputText);
 
         contactsRows.append(item);
         surnameInput.val("");
@@ -57,28 +57,28 @@ $(function () {
 
         if (surname.length === 0 || name.length === 0 || phoneNumber.length === 0) {
             if (surname.length === 0) {
-                surnameErrorMessage.show();
+                surnameErrorMessage.css("visibility", "visible");
                 surnameInput.addClass("red-border");
                 surnameErrorMessage.text("Заполните фамилию!");
             }
 
             if (name.length === 0) {
                 nameInput.addClass("red-border");
-                nameErrorMessage.show();
+                nameErrorMessage.css("visibility", "visible");
                 nameErrorMessage.text("Заполните имя!");
             }
 
             if (phoneNumber.length === 0) {
                 phoneNumberInput.addClass("red-border");
-                phoneNumberErrorMessage.show();
+                phoneNumberErrorMessage.css("visibility", "visible");
                 phoneNumberErrorMessage.text("Заполните телефон!");
             }
 
-            isError = true;
+            return isError;
         } else {
-            contactsRows.find(".new-phone-number").each(function () {
+            contactsRows.find(".phone-number").each(function () {
                 if ($(this).text() === phoneNumber) {
-                    phoneNumberErrorMessage.show();
+                    phoneNumberErrorMessage.css("visibility", "visible");
                     phoneNumberInput.addClass("red-border");
                     phoneNumberErrorMessage.text("Данный номер уже зарегистрирован!");
                     isError = true;
@@ -108,11 +108,11 @@ $(function () {
             {
                 text: "OK",
                 click: function () {
-                    if (checkedItems.length === 0){
+                    if (checkedItems.length === 0) {
                         deleteItem.remove();
                         setTableNumbering();
                         confirmationDeleteDialogElement.dialog("close");
-                    } else{
+                    } else {
                         checkedItems.forEach(function (el) {
                             el.remove();
                         });
@@ -130,20 +130,24 @@ $(function () {
                 click: function () {
                     confirmationDeleteDialogElement.dialog("close");
                     checkedItems = [];
-                    console.log(checkedItems);
                 }
             }
         ]
     });
 
     $("#all-selected-checkbox").click(function () {
-        this.checked ? $(".checkbox-flag").prop("checked", true) : $(".checkbox-flag").prop("checked", false);
+        if (this.checked) {
+            $(".checkbox-flag").prop("checked", true);
+        } else {
+            $(".checkbox-flag").prop("checked", false);
+        }
     });
 
     $(".filter input").on("keyup", function () {
         var filterText = $(this).val().toLowerCase();
-        $('.contacts-rows tr').filter(function () {
+        $(".contacts-rows tr").filter(function () {
             $(this).toggle($(this).text().toLowerCase().indexOf(filterText) > -1);
+            $(".checkbox-flag").prop("checked", false);
         });
     });
 

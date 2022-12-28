@@ -16,12 +16,13 @@
     font-size: 24px;
 }
 
-.input-item{
+.input-item {
     margin: 5px 5px 5px 0;
     border: 1px solid #767676;
+    vertical-align: top;
 }
 
-.input-block div{
+.input-block > div {
     display: inline-block;
 }
 
@@ -60,12 +61,13 @@
     text-indent: 5px;
 }
 
-.contacts-block td:first-child {
+.contacts-block td:first-child,
+.contacts-block td:last-child {
     text-indent: 0;
     text-align: center;
 }
 
-.error-message{
+.error-message {
     color: #d93242;
 }
 
@@ -74,21 +76,21 @@
     margin: 0 0 10px;
 }
 
-.filter{
+.filter {
     display: inline-block;
     margin: 0 0 10px;
     float: right;
 }
 
-.filter input{
+.filter input {
     width: 200px;
 }
 
-.new-contact-form button{
-   margin: 2px;
+.new-contact-form button {
+    margin: 2px;
 }
 
-.new-contact-form button:hover{
+.new-contact-form button:hover {
     background-color: #dad55e;
     font-weight: bold;
 }
@@ -97,12 +99,13 @@
     counter-reset: trCount;
 }
 
-.selected-delete-button-paragraph{
+.selected-delete-button-paragraph {
     margin: 0;
 }
 
 .selected-delete-button {
     color: #d93242;
+    margin: 2px;
 }
 
 .selected-delete-button:hover {
@@ -112,9 +115,10 @@
 
 .delete-button {
     background-color: #c3d8a6;
+    min-width: 100%;
 }
 
-.delete-button:hover{
+.delete-button:hover {
     border-color: #F00;
     color: #F00;
     background-color: #7BA00C;
