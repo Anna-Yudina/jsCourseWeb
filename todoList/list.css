@@ -1,3 +1,7 @@
+* {
+    box-sizing: border-box;
+}
+
 .list-block {
     width: 100%;
     max-width: 750px;
@@ -5,7 +9,11 @@
     background-color: #FEEED6;
     border-radius: 1em;
     border: 1px solid #000;
-    box-sizing: border-box;
+}
+
+.list-title {
+    margin: 10px;
+    text-align: center;
 }
 
 .list-title::before,
@@ -18,19 +26,55 @@
     margin: 10px;
 }
 
-.list-form input {
-    width: 85%;
-    text-align: left;
+.input-block {
+    display: flex;
+    margin-top: 5px;
 }
 
-.list-title {
+.input-block input {
+    flex: 1;
+}
+
+.input-block button {
+    margin-left: 5px;
+}
+
+.todo-list-block {
     margin: 10px;
-    text-align: center;
+    text-align: left;
+    max-width: 730px;
 }
 
-.list-form button {
-    right: 0;
-    top: 18px;
+.todo-list-block ul {
+    padding: 0;
+    margin: 0;
+}
+
+.todo-list-block li {
+    list-style-type: none;
+    border-bottom: 1px solid #000;
+}
+
+.new-row-block {
+    display: flex;
+}
+
+.todo-text {
+    line-height: 25px;
+    overflow: hidden;
+    flex: 1;
+}
+
+.edit-block {
+    display: flex;
+}
+
+.edit-block input {
+    flex: 1;
+}
+
+.buttons {
+    margin-left: 5px;
 }
 
 .buttons > button {
@@ -43,65 +87,16 @@
 
 .delete-button {
     color: #F00;
-    float: right;
 }
 
 .ok-button {
     color: #00D678;
-    float: right;
 }
 
 .cancel-button {
     font-weight: bold;
-    color: #964b00;
-    float: right;
-}
-
-.edit-button {
-    float: right;
-}
-
-.todo-list-block {
-    margin: 10px;
-    text-align: left;
-    max-width: 730px;
-    box-sizing: border-box;
-}
-
-.todo-list-block ul {
-    padding: 0;
-    margin: 0;
-}
-
-.todo-list-block li {
-    list-style-type: none;
-    border-bottom: 1px solid #000;
-    padding: 10px;
-    box-sizing: border-box;
-}
-
-.todo-text {
-    line-height: 25px;
-    overflow: hidden;
-    display: inline-block;
-    width: 85%;
-}
-
-.buttons {
-    line-height: 25px;
-    display: inline-block;
-    float: right;
-}
-
-.add-button {
-    width: 45px;
-}
-
-.edit-text {
-    width: 90%;
-    padding: 0;
-    border-color: #000;
-    overflow: hidden;
+    color: #964B00;
+    margin-left: 4px;
 }
 
 .error-message,

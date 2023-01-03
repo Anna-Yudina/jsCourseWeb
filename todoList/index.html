@@ -11,10 +11,13 @@
 <div class="list-block">
     <h1 class="list-title">TODO List</h1>
     <form class="list-form">
-        <label>Введите текст:
+        <label for="new-text">Введите текст:</label>
+        <div class="input-block">
             <input id="new-text" type="text" maxlength="85">
-        </label>
-        <button class="add-button" id="add-button" type="button">OK</button>
+            <div class="add-button">
+                <button id="add-button" type="button">OK</button>
+            </div>
+        </div>
         <div style="display: none" class="error-message">Текст не должен быть пустым!</div>
     </form>
     <div class="todo-list-block">
