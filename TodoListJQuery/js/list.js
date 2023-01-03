@@ -30,10 +30,10 @@ $(function () {
         var item = $('<li>');
 
         function setEditMode() {
-            item.html("<input class='edit-text' type='text' maxlength='85'>" +
+            item.html("<div class='edit-block'><input class='edit-text' type='text' maxlength='85'>" +
                 "<div class='buttons'>" +
                 "<button class='ok-button' type='button' title='Сохранить'>&#10004;</button>" +
-                "<button class='cancel-button' type='button' title='Отмена'>&#8634;</button></div>" +
+                "<button class='cancel-button' type='button' title='Отмена'>&#8634;</button></div></div>" +
                 "<div style = 'display: none' class='edit-error-message'>Текст не должен быть пустым!</div>");
 
             item.find('.edit-text').val(text);
@@ -61,10 +61,10 @@ $(function () {
         }
 
         function setViewMode() {
-            item.html("<div class='todo-text'></div>" +
+            item.html("<div class='new-row-block'><div class='todo-text'></div>" +
                 "<div class='buttons'>" +
                 "<button class='delete-button' type='button' title='Удалить'>&#10006;</button> " +
-                "<button class='edit-button' type='button' title='Редактировать'>&#9998;</button></div>");
+                "<button class='edit-button' type='button' title='Редактировать'>&#9998;</button></div></div>");
 
             item.find('.todo-text').text(text);
 
@@ -75,7 +75,7 @@ $(function () {
             });
 
             item.find('.edit-button').click(function () {
-                errorMessage.show();
+                errorMessage.hide();
                 newText.removeClass('red-border');
                 setEditMode();
             });
