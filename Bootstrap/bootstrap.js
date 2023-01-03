@@ -5,17 +5,17 @@ $(function () {
     var errorMessage = $('#error-message').first();
 
     addButton.click(function () {
-        createTodoList();
+        createTodoListRow();
     });
 
     newText.keydown(function (e) {
         if (e.keyCode === 13) {
             e.preventDefault();
-            createTodoList();
+            createTodoListRow();
         }
     })
 
-    function createTodoList() {
+    function createTodoListRow() {
         var text = newText.val().trim();
 
         errorMessage.hide();
@@ -30,12 +30,12 @@ $(function () {
         var item = $("<li class='list-group-item m-0 p-0'>");
 
         function setEditMode() {
-            item.html("<div class='row m-2'>" +
-                "<div class='col-2'></div>" +
-                "<div class='col-8 text-start'>" +
+            item.html("<div class='row mb-2'>" +
+                "<div class='col-0 col-lg-2'></div>" +
+                "<div class='col-9 col-lg-8 text-start'>" +
                 "<input class='edit-text form-control' type='text' maxLength='85'>" +
-                "<div style = 'display: none' class='edit-error-message invalid-feedback'>Текст не должен быть пустым!</div></div>" +
-                "<div class='col-2 text-start'>" +
+                "<div style='display: none' class='edit-error-message invalid-feedback'>Текст не должен быть пустым!</div></div>" +
+                "<div class='col-3 col-lg-2 text-start'>" +
                 "<button class='ok-button btn btn-success me-2' type='button' title='Сохранить'>&#10003;</button>" +
                 "<button class='cancel-button btn btn-secondary btn-outline-light' type='button' title='Отмена'>&#8634;</button></div></div>");
 
@@ -64,10 +64,10 @@ $(function () {
         }
 
         function setViewMode() {
-            item.html("<div class='row m-2'>" +
-                "<div class='col-2'></div>" +
-                "<div class='col-8 text-start'><span class='text-block'></span></div>" +
-                "<div class='col-2 text-start'>" +
+            item.html("<div class='row mb-2'>" +
+                "<div class='col-0 col-lg-2'></div>" +
+                "<div class='col-9 col-lg-8 text-start'><span class='text-block'></span></div>" +
+                "<div class='col-3 col-lg-2 text-start'>" +
                 "<button class='delete-button btn btn-danger me-2' type='button' title='Удалить'>&#10005;</button>" +
                 "<button class='edit-button btn btn-secondary btn-outline-light m-0' type='button' title='Редактировать'>&#9998;</button></div></div>");
 
@@ -80,7 +80,7 @@ $(function () {
             });
 
             item.find('.edit-button').click(function () {
-                errorMessage.show();
+                errorMessage.hide();
                 newText.removeClass('is-invalid');
                 setEditMode();
             });
