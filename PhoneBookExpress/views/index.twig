@@ -1,0 +1,62 @@
+{% extends 'layout.twig' %}
+
+{% block body %}
+    {% verbatim %}
+        <div v-cloak id="app" class="container">
+           <h1>Телефонная книга</h1>
+
+            <form class="mb-3" @submit.prevent="createContact">
+                <div class="row mb-2">
+                    <div class="col-12 col-lg-4 mb-2">
+                        <input v-model="name" type="text" class="form-control" id="input-name" placeholder="Имя контакта">
+                    </div>
+                    <div class="col-12 col-lg-4 mb-2">
+                        <input v-model="surname" type="text" class="form-control" id="input-surname" placeholder="Фамилия контакта">
+                    </div>
+                    <div class="col-12 col-lg-4 mb-2">
+                        <input v-model="phone" type="text" class="form-control" id="input-phone" placeholder="Телефонный номер">
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mb-2">Создать</button>
+            </form>
+
+            <hr>
+
+            <form class="mb-3" @submit.prevent="loadContacts">
+            <h2>Поиск</h2>
+                <div class="d-flex">
+                    <input v-model="term" type="search" class="form-control me-2 search" placeholder="&#128269;">
+                    <button class="btn btn-primary" type="submit">Поиск</button>
+                </div>
+            </form>
+
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <thead class="table-info">
+                        <tr>
+                            <th class="col-1 text-center" ><input type="checkbox"></th>
+                            <th class="col-1 text-center">Номер</th>
+                            <th class="col-3 text-center">Имя</th>
+                            <th class="col-3 text-center" >Фамилия</th>
+                            <th class="col-3 text-center">Телефон</th>
+                            <th class="col-1"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr v-for="(c, index) in contacts" :key="c.id">
+                            <td class="text-center"><input type="checkbox" v-model="c.checked"></td>
+                            <td v-text="index + 1"></td>
+                            <td v-text="c.name"></td>
+                            <td v-text="c.surname"></td>
+                            <td v-text="c.phone"></td>
+                            <td class="text-center">
+                                <button @click="deleteContact(c)" type="button" class="btn btn-danger" title="Удаление">&#9747;</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <button type="button" class="btn btn-danger" @click="deletedChecked">Удалить выбранные</button>
+            </div>
+        </div>
+    {% endverbatim %}
+{% endblock %}
