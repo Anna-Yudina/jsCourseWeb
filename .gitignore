@@ -12,11 +12,6 @@
 /junk
 /.idea/jsCourseWeb.iml
 /.idea/modules.xml
-/Underscore/node_modules
-/Underscore2/node_modules/
-/Bootstrap/node_modules/
-/myVueTodoList/node_modules/
 /jQueryUi/
-/vueTodoList/node_modules/
 /testVue/
 node_modules/

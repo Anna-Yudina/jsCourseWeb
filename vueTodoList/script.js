@@ -13,7 +13,7 @@ Vue.component("todo-item", {
             isEditing: false,
             editingText: "",
             isInvalid: false
-        }
+        };
     },
 
     methods: {
@@ -34,7 +34,7 @@ Vue.component("todo-item", {
 
             this.$emit("save-item", this.item, this.editingText);
             this.isEditing = false;
-        },
+        }
     },
 
     watch: {
@@ -47,7 +47,7 @@ Vue.component("todo-item", {
 });
 
 var vm = new Vue({
-    el: "#container",
+    el: "#app",
 
     data: {
         isInputTextInvalid: false,
@@ -60,6 +60,8 @@ var vm = new Vue({
         add: function () {
             this.isInputTextInvalid = false;
 
+            this.inputText = this.inputText.trim();
+
             if (this.inputText.length === 0) {
                 this.isInputTextInvalid = true;
                 return;
@@ -68,8 +70,7 @@ var vm = new Vue({
             this.items.push({
                 id: this.currentItemId,
                 text: this.inputText
-
-            })
+            });
 
             this.inputText = "";
             this.currentItemId++;
