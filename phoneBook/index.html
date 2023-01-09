@@ -34,7 +34,11 @@
 
 <div class="contacts-block">
     <h2 class="table-title">Телефонная книга</h2>
-    <div class="filter"><span>фильтр:</span><input type="text"></div>
+    <div class="filter">
+        <span>Поиск </span>
+        <input type="text" id="search-input">
+        <button type="button" id="search">Найти</button>
+    </div>
     <table>
         <thead>
         <tr>
@@ -49,11 +53,11 @@
         <tbody class="contacts-rows">
         </tbody>
     </table>
-    <p class="selected-delete-button-paragraph">
-        <button type="button" class="selected-delete-button">Удалить выбранные</button>
+    <p class="delete-selected-button-paragraph">
+        <button type="button" class="delete-selected-button">Удалить выбранные</button>
     </p>
 </div>
-<div id="confirmation-delete-dialog" title="Удаление">
+<div id="delete-confirmation-dialog" title="Удаление">
     <p>Вы действительно хотите удалить контакт?</p>
 </div>
 </body>

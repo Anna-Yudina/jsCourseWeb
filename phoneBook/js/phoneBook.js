@@ -7,9 +7,10 @@ $(function () {
     var surnameErrorMessage = $(".surname-error-message");
     var nameErrorMessage = $(".name-error-message");
     var phoneNumberErrorMessage = $(".phone-number-error-message");
-    var confirmationDeleteDialogElement = $("#confirmation-delete-dialog");
+    var deleteConfirmationDialogElement = $("#delete-confirmation-dialog");
+    var searchButton = $("#search");
     var checkedItems = [];
-    var deleteItem;
+    var deletedItem;
 
     saveButton.click(function () {
         var item = $("<tr>");
@@ -24,7 +25,11 @@ $(function () {
         nameInput.removeClass("red-border");
         phoneNumberInput.removeClass("red-border");
 
-        if (checkInput(surnameInputText, nameInputText, phoneNumberInputText)) {
+        if (checkInputDataForEmpty(surnameInputText, nameInputText, phoneNumberInputText)) {
+            return;
+        }
+
+        if (checkInputPhoneForRepeat(phoneNumberInputText)){
             return;
         }
 
@@ -35,6 +40,11 @@ $(function () {
             "<td class='phone-number'></td>" +
             "<td><button class='delete-button' type='button' title='Удаление'>&#10006;</button></td>");
 
+        item.find(".delete-button").click(function () {
+            deletedItem = $(this).closest("tr");
+            deleteConfirmationDialogElement.dialog("open");
+        });
+
         item.find(".surname").text(surnameInputText);
         item.find(".name").text(nameInputText);
         item.find(".phone-number").text(phoneNumberInputText);
@@ -44,38 +54,39 @@ $(function () {
         nameInput.val("");
         phoneNumberInput.val("");
 
-        $(".delete-button").click(function () {
-            deleteItem = $(this).closest("tr");
-            confirmationDeleteDialogElement.dialog("open");
-        });
-
         setTableNumbering();
     });
 
-    function checkInput(surname, name, phoneNumber) {
+    function checkInputDataForEmpty(surname, name, phoneNumber) {
         var isError = false;
 
-        if (surname.length === 0 || name.length === 0 || phoneNumber.length === 0) {
             if (surname.length === 0) {
                 surnameErrorMessage.css("visibility", "visible");
                 surnameInput.addClass("red-border");
                 surnameErrorMessage.text("Заполните фамилию!");
+                isError = true;
             }
 
             if (name.length === 0) {
                 nameInput.addClass("red-border");
                 nameErrorMessage.css("visibility", "visible");
                 nameErrorMessage.text("Заполните имя!");
+                isError = true;
             }
 
             if (phoneNumber.length === 0) {
                 phoneNumberInput.addClass("red-border");
                 phoneNumberErrorMessage.css("visibility", "visible");
                 phoneNumberErrorMessage.text("Заполните телефон!");
+                isError = true;
             }
 
             return isError;
-        } else {
+        }
+
+        function checkInputPhoneForRepeat(phoneNumber){
+            var isError = false;
+
             contactsRows.find(".phone-number").each(function () {
                 if ($(this).text() === phoneNumber) {
                     phoneNumberErrorMessage.css("visibility", "visible");
@@ -84,12 +95,12 @@ $(function () {
                     isError = true;
                 }
             });
+
+            return isError;
         }
 
-        return isError;
-    }
 
-    $(".selected-delete-button").click(function () {
+    $(".delete-selected-button").click(function () {
         contactsRows.find("tr").each(function () {
             if ($(this).find(".checkbox-flag").prop("checked")) {
                 checkedItems.push($(this));
@@ -97,11 +108,11 @@ $(function () {
         });
 
         if (checkedItems.length !== 0) {
-            confirmationDeleteDialogElement.dialog("open");
+            deleteConfirmationDialogElement.dialog("open");
         }
     });
 
-    confirmationDeleteDialogElement.dialog({
+    deleteConfirmationDialogElement.dialog({
         autoOpen: false,
         modal: true,
         buttons: [
@@ -109,9 +120,9 @@ $(function () {
                 text: "OK",
                 click: function () {
                     if (checkedItems.length === 0) {
-                        deleteItem.remove();
+                        deletedItem.remove();
                         setTableNumbering();
-                        confirmationDeleteDialogElement.dialog("close");
+                        deleteConfirmationDialogElement.dialog("close");
                     } else {
                         checkedItems.forEach(function (el) {
                             el.remove();
@@ -119,7 +130,7 @@ $(function () {
 
                         setTableNumbering();
 
-                        confirmationDeleteDialogElement.dialog("close");
+                        deleteConfirmationDialogElement.dialog("close");
                         checkedItems = [];
                         $("#all-selected-checkbox").prop("checked", false);
                     }
@@ -128,7 +139,7 @@ $(function () {
             {
                 text: "Отмена",
                 click: function () {
-                    confirmationDeleteDialogElement.dialog("close");
+                    deleteConfirmationDialogElement.dialog("close");
                     checkedItems = [];
                 }
             }
@@ -136,18 +147,24 @@ $(function () {
     });
 
     $("#all-selected-checkbox").click(function () {
-        if (this.checked) {
-            $(".checkbox-flag").prop("checked", true);
-        } else {
-            $(".checkbox-flag").prop("checked", false);
-        }
+            $(".checkbox-flag").prop("checked", this.checked);
     });
 
-    $(".filter input").on("keyup", function () {
-        var filterText = $(this).val().toLowerCase();
-        $(".contacts-rows tr").filter(function () {
-            $(this).toggle($(this).text().toLowerCase().indexOf(filterText) > -1);
-            $(".checkbox-flag").prop("checked", false);
+    searchButton.click(function (){
+        var allContacts = $(".contacts-rows tr");
+        var filterText = $("#search-input").val().toLowerCase().trim();
+
+        if(filterText.length === 0){
+            allContacts.each(function (){
+                $(this).show();
+            });
+        }
+
+        allContacts.each(function () {
+            if (!($(this).text().toLowerCase().indexOf(filterText) > -1)){
+                $(this).hide();
+                $(this).find(".checkbox-flag").prop("checked", false);
+            }
         });
     });
 
