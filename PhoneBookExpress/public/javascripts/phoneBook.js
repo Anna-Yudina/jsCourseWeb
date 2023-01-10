@@ -21,8 +21,13 @@ new Vue({
         surname: "",
         phone: "",
         term: "",
+        checked: false,
         contacts: [],
-        checked: false
+        mainChecked: false,
+        isNameTextInvalid: false,
+        isSurnameTextInvalid: false,
+        isPhoneTextInvalid: false,
+        contactToDelete: null
     },
 
     created: function () {
@@ -30,6 +35,18 @@ new Vue({
     },
 
     methods: {
+        isContactCheckboxChange: function (){
+            this.mainChecked = false;
+        },
+
+        isMainCheckboxChange: function (){
+            var isMainChecked = !this.mainChecked;
+
+            this.contacts.forEach(function (c) {
+                c.checked = isMainChecked;
+            });
+        },
+
         loadContacts: function () {
             var self = this;
 
@@ -37,27 +54,29 @@ new Vue({
                 self.contacts = contacts;
             }).fail(function () {
                 alert("Ошибка при загрузке контактов");
-            })
+            });
         },
 
-        deletedChecked: function (){
-            var checkedContacts = this.contacts.filter(function (c) {
+        showDeleteButtonConfirmDialog: function (deletedContact) {
+            this.contactToDelete = deletedContact;
+
+            new bootstrap.Modal(this.$refs.deleteButtonConfirmDialog).show();
+        },
+
+        showDeleteCheckboxConfirmDialog: function () {
+            new bootstrap.Modal(this.$refs.deleteCheckboxConfirmDialog).show();
+        },
+
+        deletedChecked: function () {
+            var checkedContactsIds = this.contacts.filter(function (c) {
                 return c.checked === true;
+            }).map(function (c) {
+                return {id: c.id};
             });
 
-
-
-            checkedContacts.forEach(function (c){
-                console.log(c);
-                this.deleteContact(c);
-            })
-        },
-
-        deleteContact: function (c) {
-            console.log('deleteContact' + c);
             var self = this;
 
-            post("/api/deleteContacts", {id: c.id}).done(function (response) {
+            post("/api/deleteContacts", checkedContactsIds).done(function (response) {
                 if (!response.success) {
                     alert(response.message);
                     return;
@@ -66,10 +85,54 @@ new Vue({
                 self.loadContacts();
             }).fail(function () {
                 alert("Ошибка при удалении контакта");
-            })
+            });
+        },
+
+        deleteContact: function () {
+            var self = this;
+
+            post("/api/deleteContacts", [{id: this.contactToDelete.id}]).done(function (response) {
+                if (!response.success) {
+                    alert(response.message);
+                    return;
+                }
+
+                self.loadContacts();
+            }).fail(function () {
+                alert("Ошибка при удалении контакта");
+            });
+        },
+
+        doValidation: function (name, surname, phone) {
+            var isInvalid = false;
+
+            if (name.length === 0) {
+                this.isNameTextInvalid = true;
+                isInvalid = true;
+            }
+
+            if (surname.length === 0) {
+                this.isSurnameTextInvalid = true;
+                isInvalid = true;
+            }
+
+            if (phone.length === 0) {
+                this.isPhoneTextInvalid = true;
+                isInvalid = true;
+            }
+
+            return isInvalid;
         },
 
         createContact: function () {
+            this.isNameTextInvalid = false;
+            this.isSurnameTextInvalid = false;
+            this.isPhoneTextInvalid = false;
+
+            if (this.doValidation(this.name, this.surname, this.phone)) {
+                return;
+            }
+
             var self = this;
 
             var request = {
@@ -90,7 +153,17 @@ new Vue({
                 self.phone = "";
             }).fail(function () {
                 alert("Ошибка при добавлении контакта");
-            })
+            });
         }
     }
-});
+
+    // watch: {
+    //     mainChecked: function () {
+    //         var isMainChecked = this.mainChecked;
+    //
+    //         this.contacts.forEach(function (c) {
+    //             c.checked = isMainChecked;
+    //         });
+    //     }
+    // }
+})

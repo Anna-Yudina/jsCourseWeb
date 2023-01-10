@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 
-
 /* GET home page. */
 router.get('/', function (req, res, next) {
     res.render('index', {title: 'Express3'});
@@ -21,10 +20,12 @@ router.get("/api/getContacts", function (req, res) {
 });
 
 router.post("/api/deleteContacts", function (req, res) {
-    var id = req.body.id
+    var ids = req.body.map(function (item) {
+        return item.id;
+    })
 
-    contacts = contacts.filter(function (c) {
-        return c.id !== id;
+    contacts = contacts.filter(function (item) {
+        return ids.indexOf(item.id) === -1;
     });
 
     res.send({
@@ -36,37 +37,14 @@ router.post("/api/deleteContacts", function (req, res) {
 router.post("/api/createContact", function (req, res) {
     var requestData = req.body;
 
-    if(!requestData.name){
-        res.send({
-            success: false,
-            message: "Не введено имя"
-        });
-        return;
-    }
-
-    if(!requestData.surname){
-        res.send({
-            success: false,
-            message: "Не введена фамилия"
-        });
-        return;
-    }
-
-    if(!requestData.phone){
-        res.send({
-            success: false,
-            message: "Не введен номмер телефона"
-        });
-        return;
-    }
-
-    if(contacts.some(function (c){
+    if (contacts.some(function (c) {
         return c.phone.toUpperCase() === requestData.phone.toUpperCase();
-    })){
+    })) {
         res.send({
             success: false,
             message: "Данный контакт уже существует"
         });
+
         return;
     }
 
@@ -85,6 +63,6 @@ router.post("/api/createContact", function (req, res) {
         success: true,
         message: null
     });
+});
 
-})
 module.exports = router;
