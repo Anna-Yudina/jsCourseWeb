@@ -8,7 +8,7 @@
           media="screen, projection">
     <script defer src="node_modules/jquery/dist/jquery.js"></script>
     <script defer src="node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <script defer src="bootstrap.js"></script>
+    <script defer src="script.js"></script>
 </head>
 <body>
 <div class="container text-center bg-secondary text-white rounded border-dark border border-2">
@@ -20,10 +20,10 @@
             </div>
             <div class="col-10 col-lg-8">
                 <input id="new-text" type="text" maxlength="85" class="form-control">
-                <span style="display: none" id="error-message"
+                <span id="error-message"
                       class="invalid-feedback">Текст не должен быть пустым!</span>
             </div>
-            <div class="col-2 col-lg-2 text-start">
+            <div class="col-2 text-start">
                 <button class="btn btn-primary" id="add-button" type="button">OK</button>
             </div>
         </div>
