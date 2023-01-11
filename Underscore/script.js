@@ -21,21 +21,15 @@ $(function () {
         {name: "Ivan", age: 34}
     ];
 
-    var counter = 1;
-
-    _.each(people, function (man) {
-        peopleList.append(counter + ". ");
-        peopleList.append("name: " + man.name + ", age: " + man.age);
+    _.each(people, function (person, index) {
+        peopleList.append(index + 1 + ". ");
+        peopleList.append("name: " + person.name + ", age: " + person.age);
         peopleList.append("<br>");
-        counter++;
     })
 
-    console.log(people);
-
     var peopleAverageAge = _.chain(people)
-        .pluck("age")
-        .reduce(function (sum, age) {
-            return sum + age;
+        .reduce(function (sum, person) {
+            return sum + person.age;
         }, 0)
         .value() / _.size(people);
 
