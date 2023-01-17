@@ -25,11 +25,11 @@ $(function () {
         nameInput.removeClass("red-border");
         phoneNumberInput.removeClass("red-border");
 
-        if (checkInputDataForEmpty(surnameInputText, nameInputText, phoneNumberInputText)) {
+        if (checkInputDataForNotEmpty(surnameInputText, nameInputText, phoneNumberInputText)) {
             return;
         }
 
-        if (checkInputPhoneForRepeat(phoneNumberInputText)){
+        if (checkInputPhoneForNotRepeat(phoneNumberInputText)) {
             return;
         }
 
@@ -57,47 +57,48 @@ $(function () {
         setTableNumbering();
     });
 
-    function checkInputDataForEmpty(surname, name, phoneNumber) {
+    function checkInputDataForNotEmpty(surname, name, phoneNumber) {
         var isError = false;
 
-            if (surname.length === 0) {
-                surnameErrorMessage.css("visibility", "visible");
-                surnameInput.addClass("red-border");
-                surnameErrorMessage.text("Заполните фамилию!");
-                isError = true;
-            }
+        if (surname.length === 0) {
+            surnameErrorMessage.css("visibility", "visible");
+            surnameInput.addClass("red-border");
+            surnameErrorMessage.text("Заполните фамилию!");
+            isError = true;
+        }
 
-            if (name.length === 0) {
-                nameInput.addClass("red-border");
-                nameErrorMessage.css("visibility", "visible");
-                nameErrorMessage.text("Заполните имя!");
-                isError = true;
-            }
+        if (name.length === 0) {
+            nameInput.addClass("red-border");
+            nameErrorMessage.css("visibility", "visible");
+            nameErrorMessage.text("Заполните имя!");
+            isError = true;
+        }
 
-            if (phoneNumber.length === 0) {
-                phoneNumberInput.addClass("red-border");
+        if (phoneNumber.length === 0) {
+            phoneNumberInput.addClass("red-border");
+            phoneNumberErrorMessage.css("visibility", "visible");
+            phoneNumberErrorMessage.text("Заполните телефон!");
+            isError = true;
+        }
+
+        return isError;
+    }
+
+    function checkInputPhoneForNotRepeat(phoneNumber) {
+        var isError = false;
+
+        contactsRows.find(".phone-number").each(function () {
+            if ($(this).text() === phoneNumber) {
                 phoneNumberErrorMessage.css("visibility", "visible");
-                phoneNumberErrorMessage.text("Заполните телефон!");
+                phoneNumberInput.addClass("red-border");
+                phoneNumberErrorMessage.text("Данный номер уже зарегистрирован!");
                 isError = true;
+                return false;
             }
+        });
 
-            return isError;
-        }
-
-        function checkInputPhoneForRepeat(phoneNumber){
-            var isError = false;
-
-            contactsRows.find(".phone-number").each(function () {
-                if ($(this).text() === phoneNumber) {
-                    phoneNumberErrorMessage.css("visibility", "visible");
-                    phoneNumberInput.addClass("red-border");
-                    phoneNumberErrorMessage.text("Данный номер уже зарегистрирован!");
-                    isError = true;
-                }
-            });
-
-            return isError;
-        }
+        return isError;
+    }
 
 
     $(".delete-selected-button").click(function () {
@@ -147,21 +148,17 @@ $(function () {
     });
 
     $("#all-selected-checkbox").click(function () {
-            $(".checkbox-flag").prop("checked", this.checked);
+        $(".checkbox-flag").prop("checked", this.checked);
     });
 
-    searchButton.click(function (){
+    searchButton.click(function () {
         var allContacts = $(".contacts-rows tr");
         var filterText = $("#search-input").val().toLowerCase().trim();
 
-        if(filterText.length === 0){
-            allContacts.each(function (){
-                $(this).show();
-            });
-        }
+        allContacts.show();
 
         allContacts.each(function () {
-            if (!($(this).text().toLowerCase().indexOf(filterText) > -1)){
+            if (($(this).text().toLowerCase().indexOf(filterText) <= -1)) {
                 $(this).hide();
                 $(this).find(".checkbox-flag").prop("checked", false);
             }
