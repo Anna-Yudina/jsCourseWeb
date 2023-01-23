@@ -25,11 +25,11 @@ $(function () {
         nameInput.removeClass("red-border");
         phoneNumberInput.removeClass("red-border");
 
-        if (checkInputDataForNotEmpty(surnameInputText, nameInputText, phoneNumberInputText)) {
+        if (!checkInputDataForEmpty(surnameInputText, nameInputText, phoneNumberInputText)) {
             return;
         }
 
-        if (checkInputPhoneForNotRepeat(phoneNumberInputText)) {
+        if (!checkInputPhoneForRepeat(phoneNumberInputText)) {
             return;
         }
 
@@ -57,47 +57,47 @@ $(function () {
         setTableNumbering();
     });
 
-    function checkInputDataForNotEmpty(surname, name, phoneNumber) {
-        var isError = false;
+    function checkInputDataForEmpty(surname, name, phoneNumber) {
+        var isCorrectData = true;
 
         if (surname.length === 0) {
             surnameErrorMessage.css("visibility", "visible");
             surnameInput.addClass("red-border");
             surnameErrorMessage.text("Заполните фамилию!");
-            isError = true;
+            isCorrectData = false;
         }
 
         if (name.length === 0) {
             nameInput.addClass("red-border");
             nameErrorMessage.css("visibility", "visible");
             nameErrorMessage.text("Заполните имя!");
-            isError = true;
+            isCorrectData = false;
         }
 
         if (phoneNumber.length === 0) {
             phoneNumberInput.addClass("red-border");
             phoneNumberErrorMessage.css("visibility", "visible");
             phoneNumberErrorMessage.text("Заполните телефон!");
-            isError = true;
+            isCorrectData = false;
         }
 
-        return isError;
+        return isCorrectData;
     }
 
-    function checkInputPhoneForNotRepeat(phoneNumber) {
-        var isError = false;
+    function checkInputPhoneForRepeat(phoneNumber) {
+        var isCorrectData = true;
 
         contactsRows.find(".phone-number").each(function () {
             if ($(this).text() === phoneNumber) {
                 phoneNumberErrorMessage.css("visibility", "visible");
                 phoneNumberInput.addClass("red-border");
                 phoneNumberErrorMessage.text("Данный номер уже зарегистрирован!");
-                isError = true;
+                isCorrectData = false;
                 return false;
             }
         });
 
-        return isError;
+        return isCorrectData;
     }
 
 
@@ -158,7 +158,7 @@ $(function () {
         allContacts.show();
 
         allContacts.each(function () {
-            if (($(this).text().toLowerCase().indexOf(filterText) <= -1)) {
+            if ($(this).text().toLowerCase().indexOf(filterText) < 0) {
                 $(this).hide();
                 $(this).find(".checkbox-flag").prop("checked", false);
             }
