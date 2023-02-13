@@ -13,20 +13,19 @@ function post(url, data) {
 }
 
 export class PhoneBookService {
-
     constructor() {
         this.url = "/api/";
     }
 
-    getContacts = function (term) {
-        return get(this.url + "getContacts", {term: term});
+    getContacts(term) {
+        return get(this.url + "getContacts", {term});
     };
 
-    createContacts = function (contact) {
+    createContacts(contact) {
         return post(this.url + "createContact", contact);
     };
 
-    deleteContacts = function (ids) {
+    deleteContacts(ids) {
         return post(this.url + "deleteContacts", ids);
     };
 }

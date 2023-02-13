@@ -135,19 +135,19 @@ export default {
     methods: {
         loadContacts() {
             this.checkedContactsIds = this.contacts
-                .filter(c => c.isChecked === true)
+                .filter(c => c.isChecked)
                 .map(c => c.id);
-
 
             this.service.getContacts(this.term).done(contacts => {
                 this.contacts = contacts;
+
                 contacts.forEach(contact => {
-                    this.checkedContactsIds.forEach(checkedContactId => {
+                    this.checkedContactsIds.some(checkedContactId => {
                         if (contact.id === checkedContactId) {
                             contact.isChecked = true;
                         }
-                    });
-                });
+                    })
+                })
             }).fail(() => {
                 alert("Ошибка при загрузке контактов");
             });
@@ -171,7 +171,6 @@ export default {
                 .map(contact => {
                     return contact.id;
                 });
-
 
             this.service.deleteContacts(checkedContactsIds).done(response => {
                 if (!response.success) {
