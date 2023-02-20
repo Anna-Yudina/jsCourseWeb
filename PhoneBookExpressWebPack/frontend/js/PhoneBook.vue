@@ -142,10 +142,8 @@ export default {
                 this.contacts = contacts;
 
                 contacts.forEach(contact => {
-                    this.checkedContactsIds.some(checkedContactId => {
-                        if (contact.id === checkedContactId) {
-                            contact.isChecked = true;
-                        }
+                    contact.isChecked = this.checkedContactsIds.some(checkedContactId => {
+                       return contact.id === checkedContactId
                     })
                 })
             }).fail(() => {
@@ -241,6 +239,7 @@ export default {
                 }
 
                 this.loadContacts();
+
                 this.name = "";
                 this.surname = "";
                 this.phone = "";

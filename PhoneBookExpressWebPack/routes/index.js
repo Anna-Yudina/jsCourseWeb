@@ -47,8 +47,7 @@ router.post("/api/createContact", function (req, res) {
         id: currentContactId,
         name: requestData.name,
         surname: requestData.surname,
-        phone: requestData.phone,
-        isChecked: false
+        phone: requestData.phone
     };
 
     currentContactId++;
